@@ -1,6 +1,7 @@
 const User = require('../../models/user.js')
 const UserSession = require('../../models/userSession.js')
 
+
 module.exports = (app) => {
 
     app.post('/api/account/signup', (req, res, next) => {

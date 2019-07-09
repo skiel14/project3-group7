@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 import axios from 'axios'
-
+var Router = require('react-router');
 
 class LoginPage extends React.Component {
     constructor(props){
@@ -36,6 +36,8 @@ class LoginPage extends React.Component {
             console.log(response)
             if (response.data){
                 console.log(response.data)
+                setTimeout(Router.browserHistory.push('/'), 3000);
+                
                 // this.setState({
                 //     redirectTo: '/login'
                 // })
@@ -54,7 +56,7 @@ class LoginPage extends React.Component {
                 <div className="card card-container">
                     <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
                     <p id="profile-name" className="profile-name-card"></p>
-                    <p>Account Sign-in</p>
+                    <p className="text-center">Account Sign-in</p>
                     <form className="form-signin">
                         <span id="reauth-email" className="reauth-email"></span>
                         <input name="username" type="text" id="inputUsername" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleChange.bind(this)}required autoFocus></input>
@@ -63,7 +65,7 @@ class LoginPage extends React.Component {
                         </div>
                         <button className="btn btn-lg btn-primary btn-block btn-signin" type="submit" onClick={this.handleSubmit.bind(this)}>Sign in</button>
                     </form>
-                    <a href="#" className="forgot-password">
+                    <a href="./newacct" className="forgot-password text-center">
                         Need an account?  Create one!
                     </a>
                 </div>
