@@ -3,7 +3,6 @@ var express = require("express")
 var app = express()
 var logger = require("morgan");
 var mongoose = require("mongoose");
-var cors = require("cors")
 const path = require('path');
 
 //Set Up Express
@@ -21,19 +20,3 @@ mongoose.connect(mongoURI, { useNewUrlParser: true });
 
 // API routes
 require('./routes')(app);
-
-//CORS?
-var whitelist = [
-    'http://0.0.0.0:3000',
-    'http://localhost:3000',
-    'http://0.0.0.0:8080',
-    'http://localhost:8080'
-];
-var corsOptions = {
-    origin: function(origin, callback){
-        var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-        callback(null, originIsWhitelisted);
-    },
-    credentials: true
-};
-app.use(cors(corsOptions));
