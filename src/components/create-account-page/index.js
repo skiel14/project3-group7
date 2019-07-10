@@ -30,7 +30,7 @@ class CreateAccountPage extends React.Component {
         console.log('signupform, username:')
         console.log(this.state.username)
         //Request Server Here
-        axios.post('http://localhost:8080/',{
+        axios.post('http://localhost:8080/api/account/signin',{
             username: this.state.username,
             password: this.state.password
         })
@@ -61,7 +61,7 @@ class CreateAccountPage extends React.Component {
                         <input name="password" type="password" id="inputPassword" className="form-control" placeholder="Password" value={this.state.password} onChange={this.handleChange.bind(this)} required></input>
                         <div id="remember" className="checkbox">
                         </div>
-                        <button className="btn btn-lg btn-primary btn-block btn-signin" type="submit" onClick={this.handleSubmit.bind(this)}>Sign in</button>
+                        <button className="btn btn-lg btn-primary btn-block btn-signin" type="submit" onClick={this.handleSubmit.bind(this)}>Create Account</button>
                     </form>
                 </div>
             </div>

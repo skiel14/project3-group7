@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import axios from 'axios'
+
 var Router = require('react-router');
 
 class LoginPage extends React.Component {
@@ -28,7 +29,8 @@ class LoginPage extends React.Component {
         console.log('signupform, suername:')
         console.log(this.state.username)
         //Request Server Here
-        axios.post('http://localhost:8080/api/account/signin',{
+        axios.post('http://localhost:8080/api/account/signin',
+        {
             username: this.state.username,
             password: this.state.password
         })
