@@ -101,6 +101,7 @@ module.exports = (app) => {
                 })
             }
             if (users.length != 1) {
+                console.log(req)
                 return res.send({
                     success: false,
                     message: 'error: invalid1'
@@ -116,6 +117,7 @@ module.exports = (app) => {
 
             userSession = new UserSession()
             userSession.userId = user._id
+            userSession.username = user.username
             userSession.save((error, document) => {
                 if (error) {
                     return res.send({
@@ -154,9 +156,13 @@ module.exports = (app) => {
                 })
             }
             else {
-                return res.send({
+                console.log('here is session data')
+                console.log(sessions)
+                return res.json({
                     success: true,
-                    message: 'Token Verified - go to landing page'
+                    userId: sessions[0].userId,
+                    username: sessions[0].username,
+                    message: 'Token Verified - go home'
                 })
             }
         })

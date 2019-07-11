@@ -1,6 +1,10 @@
 import React from 'react';
 import './style.css';
 import axios from 'axios'
+import {
+    getFromStorage,
+    setInStorage
+} from '../../utils/storage'
 
 var Router = require('react-router');
 
@@ -29,20 +33,20 @@ class LoginPage extends React.Component {
         console.log('signupform, suername:')
         console.log(this.state.username)
         //Request Server Here
-        axios.post('http://localhost:8080/api/account/signin',
+        axios.post('/api/account/signin',
         {
             username: this.state.username,
             password: this.state.password
         })
         .then(response => {
-            console.log(response)
+            console.log(response.data)
             if (response.data){
                 console.log(response.data)
-                setTimeout(Router.browserHistory.push('/'), 3000);
-                
-                // this.setState({
-                //     redirectTo: '/login'
-                // })
+                document.getElementById('notification').innerHTML = response.data.message
+                if(response.data.token){
+                    setInStorage('bach2basics', response.data.token)
+                    setTimeout(() => {this.props.history.push('/home')}, 2000)
+                }
             } else {
                 console.log('Sign-up error')
             }
@@ -59,6 +63,7 @@ class LoginPage extends React.Component {
                     <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
                     <p id="profile-name" className="profile-name-card"></p>
                     <p className="text-center">Account Sign-in</p>
+                    <p id="notification"></p>
                     <form className="form-signin">
                         <span id="reauth-email" className="reauth-email"></span>
                         <input name="username" type="text" id="inputUsername" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleChange.bind(this)}required autoFocus></input>
