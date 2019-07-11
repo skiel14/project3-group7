@@ -13,6 +13,10 @@ var UserSessionSchema = new mongoose.Schema({
     isDeleted: {
         type: Boolean,
         default: false
+    },
+    username: {
+        type: String,
+        default: "null---"
     }
 })
 
