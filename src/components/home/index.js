@@ -33,6 +33,10 @@ class Home extends React.Component {
                         isLoading: false
                     })
                 }
+                else {
+                    console.log('invalid token')
+                    setTimeout(() => {this.props.history.push('/')}, 2000)
+                }
             })
         } else{
             console.log("no token found")
@@ -56,21 +60,15 @@ class Home extends React.Component {
         */
     }
 
-    handleSubmit(e) {
-        /*
-        e.preventDefault()
-        console.log('signupform, username:')
-        console.log(this.state.username)
-        //Request Server Here
-        axios.post('http://localhost:8080/api/account/signin',{
-            username: this.state.username,
-            password: this.state.password
-        })
+    logout(e) {
+        var token = getFromStorage('bach2basics')
+        console.log(token)
+        axios.get('/api/account/logout?token=' + token)
         .then(response => {
             console.log(response)
             if (response.data){
-                console.log('successful signup')
-                setTimeout(Router.browserHistory.push('/'), 3000);
+                console.log('successful logout')
+                setTimeout(() => {this.props.history.push('/')}, 2000)
             } else {
                 console.log('Sign-up error')
             }
@@ -78,7 +76,6 @@ class Home extends React.Component {
             console.log('Signup server error: ')
             console.log(error)
         })
-        */
     }
     render(){
     var {
@@ -101,7 +98,7 @@ class Home extends React.Component {
         return (
             <>
             <p>Welcome {this.state.username}!</p>
-            <button id='logoutButton'>Logout</button>
+            <button id='logoutButton' onClick={this.logout.bind(this)}>Logout</button>
             </>
         )
     }

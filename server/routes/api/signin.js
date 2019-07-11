@@ -169,11 +169,10 @@ module.exports = (app) => {
     })
 
     app.get('/api/account/logout', (req, res, next) => {
-        const { query } = req
-        const { token } = query
-
+        console.log("req coming in")
+        console.log(req.query.token)
         UserSession.findOneAndUpdate({
-            _id: token,
+            _id: req.query.token,
             isDeleted: false
         }, {
             $set: {
