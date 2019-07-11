@@ -11,10 +11,6 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.listen(PORT, function() {
-    console.log("Server listening on: http://localhost:" + PORT);
-});
-
 // Connect to the Mongo DB
 var mongoURI = process.env.MONGODB_URI || "mongodb://localhost/musicApp"
 mongoose.connect(mongoURI, { useNewUrlParser: true });
@@ -28,3 +24,8 @@ app.get('*', (req, res) => {    res.sendfile(path.join(__dirname = 'client/build
 
 //build mode
 app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/client/public/index.html'));})
+
+//Express Listen
+app.listen(PORT, function() {
+    console.log("Server listening on: http://localhost:" + PORT);
+});
