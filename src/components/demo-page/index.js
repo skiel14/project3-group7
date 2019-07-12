@@ -6,7 +6,7 @@ const CreateDemoPage = () => (<>
 
   <section id="wrap">
     <header>
-      <h1>JS Piano</h1>
+      <h1>JS Mini Practice Piano</h1>
       <h2>Use your keyboard. Hover for hints.</h2>
     </header>
     <section id="main">
@@ -65,37 +65,25 @@ const CreateDemoPage = () => (<>
         </div>
       </div>
 
-      <audio data-key="65" src="/040.wav"></audio>
-      <audio data-key="87" src="/041.wav"></audio>
-      <audio data-key="83" src="/042.wav"></audio>
-      <audio data-key="69" src="/043.wav"></audio>
-      <audio data-key="68" src="/044.wav"></audio>
-      <audio data-key="70" src="/045.wav"></audio>
-      <audio data-key="84" src="/046.wav"></audio>
-      <audio data-key="71" src="/047.wav"></audio>
-      <audio data-key="89" src="/048.wav"></audio>
-      <audio data-key="72" src="/049.wav"></audio>
-      <audio data-key="85" src="/050.wav"></audio>
-      <audio data-key="74" src="/051.wav"></audio>
-      <audio data-key="75" src="/052.wav"></audio>
-      <audio data-key="79" src="/053.wav"></audio>
-      <audio data-key="76" src="/054.wav"></audio>
-      <audio data-key="80" src="/055.wav"></audio>
-      <audio data-key="186" src="/056.wav"></audio>
+      <audio data-key="65" src="./sounds/040.wav"></audio>
+      <audio data-key="87" src="./sounds/041.wav"></audio>
+      <audio data-key="83" src="./sounds/042.wav"></audio>
+      <audio data-key="69" src="./sounds/043.wav"></audio>
+      <audio data-key="68" src="./sounds/044.wav"></audio>
+      <audio data-key="70" src="./sounds/045.wav"></audio>
+      <audio data-key="84" src="./sounds/046.wav"></audio>
+      <audio data-key="71" src="./sounds/047.wav"></audio>
+      <audio data-key="89" src="./sounds/048.wav"></audio>
+      <audio data-key="72" src="./sounds/049.wav"></audio>
+      <audio data-key="85" src="./sounds/050.wav"></audio>
+      <audio data-key="74" src="./sounds/051.wav"></audio>
+      <audio data-key="75" src="./sounds/052.wav"></audio>
+      <audio data-key="79" src="./sounds/053.wav"></audio>
+      <audio data-key="76" src="./sounds/054.wav"></audio>
+      <audio data-key="80" src="./sounds/055.wav"></audio>
+      <audio data-key="186" src="./sounds/056.wav"></audio>
       </section>
   </section>
-
-
-  {/* <div id="content">
-    <div class="container">
-        <h1>Play a song!</h1>
-        <p> (all instruments) </p>
-        <div id="Selector"></div>
-        <br/>
-        <div id="Keyboard"></div>
-    </div>
-
-  </div> */}
 
 </>)
 
