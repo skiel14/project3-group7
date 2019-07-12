@@ -1,3 +1,4 @@
+function keyboardjs(){
 NProgress.start();
 // load samples //
 var samples = SampleLibrary.load({
@@ -46,3 +47,5 @@ keyboardUI.on('change', function(note) {
         current.triggerRelease(Tone.Frequency(note.note, "midi").toNote());
     }
 })
+}
+export default keyboardjs
