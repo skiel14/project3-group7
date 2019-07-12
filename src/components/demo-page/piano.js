@@ -1,35 +1,37 @@
+
 function pianojs(){
-const keys = document.querySelectorAll(".key"),
-  note = document.querySelector(".nowplaying"),
-  hints = document.querySelectorAll(".hints");
 
-function playNote(e) {
-  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`),
-    key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  const keys = document.querySelectorAll(".key"),
+    note = document.querySelector(".nowplaying"),
+    hints = document.querySelectorAll(".hints");
 
-  if (!key) return;
+  function playNote(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`),
+      key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 
-  const keyNote = key.getAttribute("data-note");
+    if (!key) return;
 
-  key.classList.add("playing");
-  note.innerHTML = keyNote;
-  audio.currentTime = 0;
-  audio.play();
-}
+    const keyNote = key.getAttribute("data-note");
 
-function removeTransition(e) {
-  if (e.propertyName !== "transform") return;
-  this.classList.remove("playing");
-}
+    key.classList.add("playing");
+    note.innerHTML = keyNote;
+    audio.currentTime = 0;
+    audio.play();
+  }
 
-function hintsOn(e, index) {
-  e.setAttribute("style", "transition-delay:" + index * 50 + "ms");
-}
+  function removeTransition(e) {
+    if (e.propertyName !== "transform") return;
+    this.classList.remove("playing");
+  }
 
-hints.forEach(hintsOn);
+  function hintsOn(e, index) {
+    e.setAttribute("style", "transition-delay:" + index * 50 + "ms");
+  }
 
-keys.forEach(key => key.addEventListener("transitionend", removeTransition));
+  hints.forEach(hintsOn);
 
-window.addEventListener("keydown", playNote);
+  keys.forEach(key => key.addEventListener("transitionend", removeTransition));
+
+  window.addEventListener("keydown", playNote);
 }
 export default pianojs
