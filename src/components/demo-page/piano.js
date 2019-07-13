@@ -35,6 +35,6 @@ function pianojs(){
   keys.forEach(key => key.addEventListener("transitionend", removeTransition));
 
   window.addEventListener("keydown", playNote);
-  
+
 }
-export default pianojs
+export default pianojs();

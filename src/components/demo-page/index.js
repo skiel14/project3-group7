@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import './piano'
+import pianojs from './piano'
 
 
 const CreateDemoPage = () => (<>
