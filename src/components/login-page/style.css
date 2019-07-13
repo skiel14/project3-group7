@@ -127,3 +127,8 @@
 .forgot-password:focus{
     color: rgb(12, 97, 33);
 }
+
+#notification {
+    color: red;
+    text-align: center;
+}
