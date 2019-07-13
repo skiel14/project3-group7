@@ -21,7 +21,8 @@ const keyboardShortcuts = KeyboardShortcuts.create({
 });
 
 const CreateDemoPage = (props) => {
-  return (
+  return (<>
+  <div className="wrapper">
     <DimensionsProvider>
       {({ containerWidth, containerHeight }) => (
         <SoundfontProvider
@@ -42,6 +43,8 @@ const CreateDemoPage = (props) => {
         />
       )}
     </DimensionsProvider>
+  </div>
+</>
   );
 }
 

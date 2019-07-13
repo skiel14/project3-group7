@@ -15,3 +15,7 @@
 .PianoDarkTheme .ReactPiano__Key--active.ReactPiano__Key--natural {
   background: #0396ca;
 }
+.wrapper{
+  margin: 50px;
+  background-color: black;
+}
