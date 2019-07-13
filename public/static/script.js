@@ -1,6 +1,6 @@
 // Initialize the Noteflight client API.
 NFClient.init(function(info) {
-  alert("Noteflight API is ready, version " + info.version);
+  // alert("Noteflight API is ready, version " + info.version);
 });
 
 
@@ -15,5 +15,3 @@ var options = {
   }
 }
 var scoreView = new NFClient.ScoreView('score1', 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', options);
-
-
