@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import axios from 'axios'
 
-const CreateDemoPage = () => (<>
+const CompostionPage = () => (<>
   <div id="score1" className= "noteflight">
 
 
