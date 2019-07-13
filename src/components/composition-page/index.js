@@ -3,8 +3,7 @@ import './style.css';
 import axios from 'axios'
 
 const CreateDemoPage = () => (<>
-  <div className= "noteflight">
-
+  <div id="score1" className= "noteflight">
 
 
   </div>
