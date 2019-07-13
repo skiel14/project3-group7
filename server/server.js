@@ -20,3 +20,5 @@ mongoose.connect(mongoURI, { useNewUrlParser: true });
 
 // API routes
 require('./routes')(app);
+
+// var piano = process.env.PUBLIC_URL + '/public/piano.js'

@@ -1,8 +1,4 @@
 
-
-
-function pianojs(){
-
   const keys = document.querySelectorAll(".key"),
     note = document.querySelector(".nowplaying"),
     hints = document.querySelectorAll(".hints");
@@ -36,5 +32,3 @@ function pianojs(){
 
   window.addEventListener("keydown", playNote);
 
-}
-export default pianojs();

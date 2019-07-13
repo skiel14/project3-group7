@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import pianojs from './piano'
+
 
 
 const CreateDemoPage = () => (<>
@@ -85,7 +85,7 @@ const CreateDemoPage = () => (<>
       <audio data-key="186" src="./sounds/056.wav"></audio>
       </section>
   </section>
-
+  
 </>)
 
 
