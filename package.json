@@ -9,6 +9,7 @@
     "concurrently": "^4.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jquery": "^3.4.1",
     "mongoose": "^5.6.3",
     "morgan": "^1.9.1",
     "node-env-run": "^3.0.2",
@@ -41,6 +42,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skiel14/project3-group7.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skiel14/project3-group7/issues"
   },
   "homepage" : "https://bach2basics.herokuapp.com/"
 }
