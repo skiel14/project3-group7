@@ -17,5 +17,12 @@
 }
 .wrapper{
   margin: 50px;
+  margin-top: 200px;
   background-color: black;
+}
+.charts{
+  align-items: center;
+  height: 200px;
+  margin: 50px;
+  padding: 15px;
 }

@@ -4,6 +4,7 @@ import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 import DimensionsProvider from '../DimensionsProvider';
 import SoundfontProvider from '../SoundfontProvider';
+import {Carousel, Item} from 'react-bootstrap';
 import './style.css';
 
 // webkitAudioContext fallback needed to support Safari
@@ -22,6 +23,38 @@ const keyboardShortcuts = KeyboardShortcuts.create({
 
 const CreateDemoPage = (props) => {
   return (<>
+  <div className="charts">
+  <Carousel>
+  <Carousel.Item>
+    <img
+      className="d-block"
+      src="../../../static/Cmajor.png"
+      alt="First slide"
+    />
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block"
+      src="../../../static/Dmajor.png"
+      alt="Third slide"
+    />
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block"
+      src="../../../static/Emajor.png"
+      alt="Third slide"
+    />
+  </Carousel.Item>
+  <Carousel.Item>
+    <img
+      className="d-block"
+      src="../../../static/Fmajor.png"
+      alt="Fourth slide"
+    />
+  </Carousel.Item>
+</Carousel>
+  </div>
   <div className="wrapper">
     <DimensionsProvider>
       {({ containerWidth, containerHeight }) => (
