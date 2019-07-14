@@ -36,7 +36,7 @@ const CreateDemoPage = (props) => {
     <img
       className="d-block"
       src="../../../static/Dmajor.png"
-      alt="Third slide"
+      alt="Second slide"
     />
   </Carousel.Item>
   <Carousel.Item>
