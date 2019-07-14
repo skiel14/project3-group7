@@ -24,7 +24,7 @@ const keyboardShortcuts = KeyboardShortcuts.create({
 const CreateDemoPage = (props) => {
   return (<>
   <div className="charts">
-  <Carousel>
+  <Carousel data-interval="false">
   <Carousel.Item>
     <img
       className="d-block"
