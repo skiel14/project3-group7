@@ -32,7 +32,7 @@ class CreateAccountPage extends React.Component {
         console.log('signupform, username:')
         console.log(this.state.username)
         //Request Server Here
-        axios.post('/api/account/signup',{
+        axios.post('https://elegant-bastille-67491.herokuapp.com/api/account/signup',{
             username: this.state.username,
             password: this.state.password
         })
