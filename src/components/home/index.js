@@ -20,7 +20,7 @@ class Home extends React.Component {
         var token = getFromStorage('bach2basics')
         if (token) {
             console.log("Token Exists - checking")
-            fetch('/api/account/verify?token=' + token)
+            fetch('https://elegant-bastille-67491.herokuapp.com/api/account/verify?token=' + token)
             .then(res => res.json())
             .then(json => {
                 if (json.success) {
@@ -63,7 +63,7 @@ class Home extends React.Component {
     logout(e) {
         var token = getFromStorage('bach2basics')
         console.log(token)
-        axios.get('/api/account/logout?token=' + token)
+        axios.get('https://elegant-bastille-67491.herokuapp.com/api/account/logout?token=' + token)
         .then(response => {
             console.log(response)
             if (response.data){
