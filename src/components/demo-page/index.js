@@ -13,7 +13,7 @@ const soundfontHostname = 'https://d1pzp51pvbm36p.cloudfront.net';
 
 const noteRange = {
   first: MidiNumbers.fromNote('c3'),
-  last: MidiNumbers.fromNote('f4'),
+  last: MidiNumbers.fromNote('c5'),
 };
 const keyboardShortcuts = KeyboardShortcuts.create({
   firstNote: noteRange.first,
