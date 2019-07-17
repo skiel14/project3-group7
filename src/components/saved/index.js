@@ -4,6 +4,7 @@ import NavBarComponent from '../navbar'
 
 const Saved = (props) => {
   return (<>
+     <NavBarComponent />
 
 
   </>)
