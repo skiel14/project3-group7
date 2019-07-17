@@ -7,27 +7,9 @@ import NavBarComponent from '../navbar'
 
 const CompostionPage = () => (<>
  <NavBarComponent />
-  <div id="score1">
-
-
-  </div>
-  {/* <script>
-
-    NFClient.init(function(info) {
-
-    })
-    const options = {
-      host: 'www.noteflight.com',
-      width: 800,
-      height: 400,
-      viewParams: {
-        scale: 1.5,
-        role: 'template',
-        app: 'html5'
-      }
-    }
-    const scoreView = new NFClient.ScoreView('score1', 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', options);
-  </script> */}
+  <iframe id="score1" title="score"
+    src="https://www.noteflight.com/embed/fcfd6d0bc0770f67cdbe1b8129456521fec090a0?scale=1.5&role=template&app=html5"
+    width="800" height="400"></iframe>
   </>
 )
 
