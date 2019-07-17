@@ -5,6 +5,7 @@ import {
     getFromStorage,
     setInStorage
 } from '../../utils/storage'
+import NavBarComponent from '../navbar'
 
 var Router = require('react-router');
 
@@ -58,6 +59,7 @@ class LoginPage extends React.Component {
     render(){
     return (
         <>
+        <NavBarComponent />
             <div className="container">
                 <div className="card card-container">
                     <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />

@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import axios from 'axios'
+import axios from 'axios';
 import {
     getFromStorage,
     setInStorage
@@ -45,7 +45,7 @@ class Home extends React.Component {
             })
         }
     }
-    
+
     handleChange(e) {
         /*
         let value = e.target.value;
@@ -82,7 +82,7 @@ class Home extends React.Component {
         isLoading,
         token,
     } = this.state
-    
+
     if (isLoading){
         return(
             <div><p>Loading...</p></div>
@@ -104,7 +104,7 @@ class Home extends React.Component {
     }
     /*
     return (
-        <>  
+        <>
             <div className="container">
                 <div className="card card-container">
                     <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />

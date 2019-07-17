@@ -7,6 +7,7 @@ import CompositionPage from './components/composition-page/index'
 import Home from './components/home'
 import logo from './logo.svg';
 import './App.css';
+import navbar from './components/navbar/index'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/demo" component={CreateDemoPage} />
         <Route exact path="/composition" component={CompositionPage} />
         <Route exact path="/home" component={Home} />
+        <Route exact path="/navbar" component={navbar} />
       </Switch>
     </div>
   </Router>
