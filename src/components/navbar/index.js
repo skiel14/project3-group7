@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Nav, Navbar, NavItem, Link, Brand, Button, FormControl, Form} from 'react-bootstrap';
 
-class navbarcomponent extends React.Component {
+class NavBarComponent extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -29,4 +29,4 @@ class navbarcomponent extends React.Component {
     }
   }
 
-export default navbarcomponent;
+export default NavBarComponent;

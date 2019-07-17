@@ -5,6 +5,8 @@ import 'react-piano/dist/styles.css';
 import DimensionsProvider from '../DimensionsProvider';
 import SoundfontProvider from '../SoundfontProvider';
 import {Carousel, Item} from 'react-bootstrap';
+import NavBarComponent from '../navbar'
+
 import './style.css';
 
 // webkitAudioContext fallback needed to support Safari
@@ -23,6 +25,7 @@ const keyboardShortcuts = KeyboardShortcuts.create({
 
 const CreateDemoPage = (props) => {
   return (<>
+   <NavBarComponent />
   <div className="charts">
   <Carousel data-interval="false">
   <Carousel.Item>

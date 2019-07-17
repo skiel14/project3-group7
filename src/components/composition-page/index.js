@@ -1,9 +1,12 @@
 import React from 'react';
 import './style.css';
+import NavBarComponent from '../navbar'
+
 // import axios from 'axios'
 // import scipt from '../../../public/static/script'
 
 const CompostionPage = () => (<>
+ <NavBarComponent />
   <div id="score1">
 
 
