@@ -26,8 +26,8 @@ const keyboardShortcuts = KeyboardShortcuts.create({
 const CreateDemoPage = (props) => {
   return (<>
    <NavBarComponent />
-  <div className="charts">
-  <Carousel data-interval="false">
+  <div className="charts col-md-6">
+  <Carousel indicators={false} interval={null} controls={false} data-interval="false">
   <Carousel.Item>
     <img
       className="d-block"
@@ -58,6 +58,7 @@ const CreateDemoPage = (props) => {
   </Carousel.Item>
 </Carousel>
   </div>
+  <button>Advance Slide</button>
   <div className="wrapper">
     <DimensionsProvider>
       {({ containerWidth, containerHeight }) => (

@@ -17,12 +17,12 @@
 }
 .wrapper{
   margin: 50px;
-  margin-top: 200px;
+  margin-top: 25px;
   background-color: black;
 }
 .charts{
-  align-items: center;
-  height: 200px;
-  margin: 50px;
+  display: block;
+  height: 400px;
+  margin: auto;
   padding: 15px;
 }
