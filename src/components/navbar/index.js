@@ -15,9 +15,9 @@ class NavBarComponent extends React.Component {
     <Navbar sticky="top" bg="dark" variant="dark">
     <Navbar.Brand href="#home">Bach2Basics</Navbar.Brand>
     <Nav className="mr-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#features">Practice</Nav.Link>
-      <Nav.Link href="#pricing">Compose</Nav.Link>
+      <Nav.Link href="/">Home</Nav.Link>
+      <Nav.Link href="/demo">Practice</Nav.Link>
+      <Nav.Link href="/composition">Compose</Nav.Link>
     </Nav>
     <Form inline>
       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
