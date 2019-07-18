@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
@@ -24,10 +24,20 @@ const keyboardShortcuts = KeyboardShortcuts.create({
 });
 
 const CreateDemoPage = (props) => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  
+  const handleButtonClick = (e) => {
+    triggerNewSlide()
+  }
+
+  const triggerNewSlide = (e) => {
+    setSlideIndex(slideIndex+1)
+  }
+
   return (<>
    <NavBarComponent />
   <div className="charts col-md-6">
-  <Carousel indicators={false} interval={null} controls={false} data-interval="false">
+  <Carousel id='bootstrapCarousel' onSelect={triggerNewSlide} activeIndex={slideIndex} fade={true} indicators={false} interval={null} controls={false} data-interval="false">
   <Carousel.Item>
     <img
       className="d-block"
@@ -58,7 +68,7 @@ const CreateDemoPage = (props) => {
   </Carousel.Item>
 </Carousel>
   </div>
-  <button>Advance Slide</button>
+  <button onClick={handleButtonClick}>Advance Slide</button>
   <div className="wrapper">
     <DimensionsProvider>
       {({ containerWidth, containerHeight }) => (
