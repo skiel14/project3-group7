@@ -26,3 +26,10 @@
   margin: auto;
   padding: 15px;
 }
+
+#infoBox {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-size: 35px;
+}

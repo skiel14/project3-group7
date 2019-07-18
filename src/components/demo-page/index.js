@@ -26,7 +26,12 @@ const keyboardShortcuts = KeyboardShortcuts.create({
 const CreateDemoPage = (props) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [activeNote, setActiveNote] = useState(null)
+  const [infoBox, setInfoBox] = useState("Testing")
+  const [gameState, setGameState] = useState(0)
+  const [scaleState, setScaleState] = useState(0)
+
   const cMajorScale = [{"midiNumber":48,"time":0,"duration":0.2},{"midiNumber":50,"time":0.2,"duration":0.2},{"midiNumber":52,"time":0.4,"duration":0.2},{"midiNumber":53,"time":0.6000000000000001,"duration":0.2},{"midiNumber":55,"time":0.8,"duration":0.2},{"midiNumber":57,"time":1,"duration":0.2},{"midiNumber":59,"time":1.2,"duration":0.2},{"midiNumber":60,"time":1.4,"duration":0.2}]
+  const cMajorScaleArray = [48, 50, 52, 53, 55, 57, 59, 60]
 
   //Advances Slide
   const handleButtonClick = (e) => {
@@ -53,11 +58,40 @@ const CreateDemoPage = (props) => {
     })
   }
 
-  //Records notes to an array
+  //Records notes to an array and checks against scale list
   var recordedArray = []
   const recordNote = (midiNumber) => {
+    if (midiNumber == cMajorScaleArray[scaleState]) {
+      setScaleState(scaleState+1)
+      setInfoBox("Good!")
+    }
+    else {
+      setInfoBox("Try Again")
+      setScaleState(0)
+      setTimeout(function(){
+        scaleGame()
+      }, 1000)
+    }
+    
+    
+    
     recordedArray.push(midiNumber)
     console.log(recordedArray)
+  }
+
+  //Starts game from button click
+  const startGameButton = () => {
+    setGameState(1)
+    scaleGame()
+  }
+
+  //Demos a scale and waits for response
+  function scaleGame() {
+    playScale()
+    setInfoBox("Listen")
+    setTimeout(function(){
+      setInfoBox("Now you try!")
+    }, 8035)
   }
 
   return (<>
@@ -96,6 +130,9 @@ const CreateDemoPage = (props) => {
   </div>
   <button onClick={handleButtonClick}>Advance Slide</button>
   <button onClick={playScale}>Play Scale</button>
+  <button onClick={startGameButton}>Start Game</button>
+  <p id="infoBox" className="col-md-6">{infoBox}</p>
+
   <div className="wrapper">
     <DimensionsProvider>
       {({ containerWidth, containerHeight }) => (
