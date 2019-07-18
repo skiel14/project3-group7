@@ -53,6 +53,13 @@ const CreateDemoPage = (props) => {
     })
   }
 
+  //Records notes to an array
+  var recordedArray = []
+  const recordNote = (midiNumber) => {
+    recordedArray.push(midiNumber)
+    console.log(recordedArray)
+  }
+
   return (<>
    <NavBarComponent />
   <div className="charts col-md-6">
@@ -105,6 +112,7 @@ const CreateDemoPage = (props) => {
               disabled={isLoading}
               activeNotes={activeNote}
               keyboardShortcuts={keyboardShortcuts}
+              onPlayNoteInput={recordNote}
               {...props}
             />
           )}
