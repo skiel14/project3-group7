@@ -27,11 +27,22 @@ const CreateDemoPage = (props) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [activeNote, setActiveNote] = useState(null)
   const [infoBox, setInfoBox] = useState("Testing")
-  const [gameState, setGameState] = useState(0)
+  const [gameState, setGameState] = useState(-1)
   const [scaleState, setScaleState] = useState(0)
+  const [gameDisable, setGameDisable] = useState(true)
 
-  const cMajorScale = [{"midiNumber":48,"time":0,"duration":0.2},{"midiNumber":50,"time":0.2,"duration":0.2},{"midiNumber":52,"time":0.4,"duration":0.2},{"midiNumber":53,"time":0.6000000000000001,"duration":0.2},{"midiNumber":55,"time":0.8,"duration":0.2},{"midiNumber":57,"time":1,"duration":0.2},{"midiNumber":59,"time":1.2,"duration":0.2},{"midiNumber":60,"time":1.4,"duration":0.2}]
-  const cMajorScaleArray = [48, 50, 52, 53, 55, 57, 59, 60]
+
+  var tempGameState = gameState
+  console.log("It rerendered")
+  console.log("temp:  " + tempGameState)
+  console.log("gamestate:  " + gameState)
+  //cGFDBbAEbEAbBC#F# ---2,2,1,2,2,2,1
+  const scaleStartingNotes = [
+    48,55,53,50,58,57,51,52,54,59,49,53
+  ]
+  const majorScalePattern = [
+    0,2,4,5,7,9,11,12
+  ]
 
   //Advances Slide
   const handleButtonClick = (e) => {
@@ -41,57 +52,76 @@ const CreateDemoPage = (props) => {
     setSlideIndex(slideIndex+1)
   }
 
-  //Plays an object
+  //Plays the scales
   const playScale = (e) => {
+    if(!gameDisable){
+      setGameDisable(true)
+    }
+    setInfoBox("Listen")
+    setTimeout(function(){
+      setGameDisable(false)
+      setInfoBox("Now you try!")
+    }, 8035)
+    console.log("current game state of playScale:  " + tempGameState)
+    console.log("actual state variable:  " + gameState)
     setTimeout(function(){
       setActiveNote(null)
     },8000)
-    cMajorScale.forEach(function(note, index){
-      setTimeout(function(){
-        let array = []
-        array.push(note.midiNumber)
-        setActiveNote(array)
-        console.log("here is array:  ")
-        console.log(array)
-        array = []
-      }, index*1000)
-    })
+    majorScalePattern.map(
+      function(currentValue, index) {
+      setTimeout(
+        function(){
+          var activeNoteArray = []
+          activeNoteArray.push(scaleStartingNotes[tempGameState]+currentValue)
+          console.log("This is what the active note is set to:  ")
+          console.log(activeNoteArray)
+          setActiveNote(activeNoteArray)
+        }, (1000*index)
+      )}
+    )
   }
 
-  //Records notes to an array and checks against scale list
+  //Takes Keyboard input while game is active
   var recordedArray = []
   const recordNote = (midiNumber) => {
-    if (midiNumber == cMajorScaleArray[scaleState]) {
-      setScaleState(scaleState+1)
-      setInfoBox("Good!")
-    }
-    else {
-      setInfoBox("Try Again")
-      setScaleState(0)
-      setTimeout(function(){
-        scaleGame()
-      }, 1000)
-    }
-    
-    
-    
+    if(!gameDisable){
+      console.log("here is the registered key:  " + midiNumber)
+      console.log("here is what it's comparing to:  ")
+      console.log(scaleStartingNotes[tempGameState]+ majorScalePattern[scaleState])
+      if (midiNumber == scaleStartingNotes[tempGameState]+ majorScalePattern[scaleState]) {
+        setScaleState(scaleState+1)
+        setInfoBox("Good!")
+        console.log("here is scale state:  " + scaleState)
+        if (scaleState == 7) {
+          setScaleState(0)
+          tempGameState++
+          setGameState(gameState +1)
+          triggerNewSlide()
+          playScale()
+        }
+      }
+      else {
+        setInfoBox("Try Again")
+        setScaleState(0)
+        setTimeout(function(){
+          scaleGame()
+        }, 1000)
+      }
+    } 
     recordedArray.push(midiNumber)
     console.log(recordedArray)
   }
 
   //Starts game from button click
   const startGameButton = () => {
-    setGameState(1)
+    tempGameState++
+    setGameState(tempGameState)
     scaleGame()
   }
 
   //Demos a scale and waits for response
   function scaleGame() {
     playScale()
-    setInfoBox("Listen")
-    setTimeout(function(){
-      setInfoBox("Now you try!")
-    }, 8035)
   }
 
   return (<>
@@ -129,7 +159,7 @@ const CreateDemoPage = (props) => {
 </Carousel>
   </div>
   <button onClick={handleButtonClick}>Advance Slide</button>
-  <button onClick={playScale}>Play Scale</button>
+  <button onClick={function(){}/*playScale*/}>Play Scale</button>
   <button onClick={startGameButton}>Start Game</button>
   <p id="infoBox" className="col-md-6">{infoBox}</p>
 
