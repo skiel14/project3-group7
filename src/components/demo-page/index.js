@@ -31,6 +31,8 @@ const CreateDemoPage = (props) => {
   const [scaleState, setScaleState] = useState(0)
   const [gameDisable, setGameDisable] = useState(true)
 
+  const correctNote = ["Great!", "Keep going!", "You got this!", "Wow!", "Sounds good!", "Fantastic!"]
+
 
   var tempGameState = gameState
   console.log("It rerendered")
@@ -73,8 +75,6 @@ const CreateDemoPage = (props) => {
         function(){
           var activeNoteArray = []
           activeNoteArray.push(scaleStartingNotes[tempGameState]+currentValue)
-          console.log("This is what the active note is set to:  ")
-          console.log(activeNoteArray)
           setActiveNote(activeNoteArray)
         }, (1000*index)
       )}
@@ -85,27 +85,31 @@ const CreateDemoPage = (props) => {
   var recordedArray = []
   const recordNote = (midiNumber) => {
     if(!gameDisable){
-      console.log("here is the registered key:  " + midiNumber)
-      console.log("here is what it's comparing to:  ")
-      console.log(scaleStartingNotes[tempGameState]+ majorScalePattern[scaleState])
       if (midiNumber == scaleStartingNotes[tempGameState]+ majorScalePattern[scaleState]) {
         setScaleState(scaleState+1)
-        setInfoBox("Good!")
-        console.log("here is scale state:  " + scaleState)
+        var displayPat = correctNote[Math.floor(Math.random() * correctNote.length)]
+        setInfoBox(displayPat)
         if (scaleState == 7) {
-          setScaleState(0)
-          tempGameState++
-          setGameState(gameState +1)
-          triggerNewSlide()
-          playScale()
+          setGameDisable(true)
+          setInfoBox("Wow great job!  Onto the next scale...")
+          setTimeout(function(){
+            setScaleState(0)
+            tempGameState++
+            setGameState(gameState +1)
+            triggerNewSlide()
+            playScale()
+          }, 1500)
         }
       }
       else {
-        setInfoBox("Try Again")
-        setScaleState(0)
+        setInfoBox("Oops!")
+        setGameDisable(true)
         setTimeout(function(){
-          scaleGame()
-        }, 1000)
+          setScaleState(0)
+          setTimeout(function(){
+            scaleGame()
+          }, 1000)
+        }, 1500)
       }
     } 
     recordedArray.push(midiNumber)
