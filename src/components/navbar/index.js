@@ -15,7 +15,7 @@ class NavBarComponent extends React.Component {
     <Navbar sticky="top" bg="dark" variant="dark">
     <Navbar.Brand href="#home">Bach2Basics</Navbar.Brand>
     <Nav className="mr-auto">
-      <Nav.Link href="/">Home</Nav.Link>
+      <Nav.Link href="/landing">Home</Nav.Link>
       <Nav.Link href="/demo">Practice</Nav.Link>
       <Nav.Link href="/composition">Compose</Nav.Link>
     </Nav>
