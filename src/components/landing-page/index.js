@@ -19,7 +19,7 @@ const Saved = () => {
       </div>
         <div class="row">
           <div class="col-5">
-            <Card style={{ width: '20rem' }}>
+            <Card style={{ width: '23rem' }}>
               <Card.Img variant="top" src="images/bach-cool-1.jpg" ></Card.Img>
                 <Card.Body>
                   <Card.Text>

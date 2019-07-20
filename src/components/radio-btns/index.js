@@ -10,9 +10,9 @@ class RadioBtns extends React.Component {
     }
   }
   render(){
+    var type= 'radio'
     return(<>
       <Form>
-        {['checkbox', 'radio'].map(type => (
           <div key={`inline-${type}`} className="mb-3">
             <Form.Check inline label="#" type={type} id={`inline-${type}-1`} />
             <Form.Check inline label="&#9837" type={type} id={`inline-${type}-2`} />
@@ -26,7 +26,6 @@ class RadioBtns extends React.Component {
             <Form.Check inline label="Aeolian" type={type} id={`inline-${type}-2`} />
             <Form.Check inline label="Locrian" type={type} id={`inline-${type}-2`} />
           </div>
-        ))}
       </Form>
       </>
     )
