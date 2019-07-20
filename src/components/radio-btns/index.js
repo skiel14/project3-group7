@@ -12,6 +12,7 @@ class RadioBtns extends React.Component {
   render(){
     var type= 'radio'
     return(<>
+    <div className="btns">
       <Form>
           <div key={`inline-${type}`} className="mb-3">
             <Form.Check inline label="#" type={type} id={`inline-${type}-1`} />
@@ -27,6 +28,7 @@ class RadioBtns extends React.Component {
             <Form.Check inline label="Locrian" type={type} id={`inline-${type}-2`} />
           </div>
       </Form>
+    </div>
       </>
     )
     }

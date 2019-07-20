@@ -41,6 +41,10 @@ h1 {
   text-align: center;
 }
 
+.btns{
+  margin-left: 50px;
+}
+
 .radio-inline {
   margin-right: 25px;
 }
