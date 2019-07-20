@@ -3,12 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginPage from './components/login-page'
 import CreateAccountPage from './components/create-account-page'
 import CreateDemoPage from './components/demo-page'
-import CompositionPage from './components/composition-page/index'
+import CompositionPage from './components/composition-dynamic-react'
 import Home from './components/home'
 import Saved from './components/saved'
-import logo from './logo.svg';
 import './App.css';
-import navbar from './components/navbar/index'
 
 function App() {
   return (
