@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.css';
 import {Card, CardImg, CardBody, CardText} from 'react-bootstrap';
-
 import NavBarComponent from '../navbar'
+import RadioBtns from '../radio-btns'
 
 
 
@@ -40,6 +40,7 @@ const Saved = () => {
           </div>
         </div>
       </div>
+    < RadioBtns />
 </>
 
   )
