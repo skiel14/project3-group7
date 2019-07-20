@@ -3,3 +3,9 @@ body, html {
   background-repeat: no-repeat;
   background-color: #76525c;
 }
+
+.flight{
+align-self: center;
+margin-top: 25px;
+margin-left: 200px;
+}
