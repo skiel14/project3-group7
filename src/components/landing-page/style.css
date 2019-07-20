@@ -21,9 +21,10 @@ h1, h2, h3, h4, h5, p, label {
   font-family: medici-text;
   text-align: center;
 }
-.container h1 {
+h1 {
   font-family: medici-text;
-  font-size: 5rem;
+  font-size: 100px;
+  text-align: center;
 }
 
 .card-body h5 {
@@ -38,6 +39,10 @@ h1, h2, h3, h4, h5, p, label {
 
 #circle-of-fifths {
   text-align: center;
+}
+
+.btns{
+  margin-left: 50px;
 }
 
 .radio-inline {
