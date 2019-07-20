@@ -1,0 +1,53 @@
+@font-face {
+  font-family: medici-text;
+  src: url(../landing-page/fonts/medici-text.ttf) format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+.container {
+  background-color: #76525c;
+}
+
+.card {
+  background-color: transparent;
+}
+
+h1, h2, h3, h4, h5, p, label {
+  color: #eddcb0;
+}
+.card-title{
+  font-family: medici-text;
+  text-align: center;
+}
+.container h1 {
+  font-family: medici-text;
+  font-size: 5rem;
+}
+
+.card-body h5 {
+  font-family: medici-text;
+}
+
+.bach{
+  width: 250px;
+  outline-color: white;
+  outline: 5px;
+}
+
+#circle-of-fifths {
+  text-align: center;
+}
+
+.radio-inline {
+  margin-right: 25px;
+}
+
+label.radio-inline {
+  padding-top: 5px;
+}
+
+input {
+  margin-right: 7px;
+}

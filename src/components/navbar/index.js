@@ -13,16 +13,14 @@ class NavBarComponent extends React.Component {
     return(
       <>
     <Navbar sticky="top" bg="dark" variant="dark">
-    <Navbar.Brand href="#home">Bach2Basics</Navbar.Brand>
+    <Navbar.Brand href="/">Bach2Basics</Navbar.Brand>
     <Nav className="mr-auto">
-      <Nav.Link href="/">Home</Nav.Link>
+      <Nav.Link href="/landing">Home</Nav.Link>
       <Nav.Link href="/demo">Practice</Nav.Link>
       <Nav.Link href="/composition">Compose</Nav.Link>
+      <Nav.Link href="/saved">Saved</Nav.Link>
     </Nav>
-    <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-info">Search</Button>
-    </Form>
+
     </Navbar>
   </>
     )

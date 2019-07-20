@@ -5,6 +5,7 @@ import CreateAccountPage from './components/create-account-page'
 import CreateDemoPage from './components/demo-page'
 import CompositionPage from './components/composition-page/index'
 import Home from './components/home'
+import landingPage from './components/landing-page/index'
 import Saved from './components/saved'
 import logo from './logo.svg';
 import './App.css';
@@ -20,7 +21,8 @@ function App() {
         <Route exact path="/demo" component={CreateDemoPage} />
         <Route exact path="/composition" component={CompositionPage} />
         <Route exact path="/home" component={Home} />
-        <Route exact path="/Saved" component={Saved} />
+        <Route exact path="/landing" component={landingPage} />
+        <Route exact path="/saved" component={Saved} />
       </Switch>
     </div>
   </Router>
