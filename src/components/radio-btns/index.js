@@ -11,29 +11,23 @@ class RadioBtns extends React.Component {
   }
   render(){
     return(<>
-      <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-2">
-          <label class="radio-inline"><input type="radio" name="optradio">#</label>
-          <label class="radio-inline"><input type="radio" name="optradio">&#9837</label>
-        </div>
-        <div class="col-md-3">
-          <label class="radio-inline"><input type="radio" name="optradio">Major</label>
-          <label class="radio-inline"><input type="radio" name="optradio">minor</label>
-        </div>
-      </div>
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-10">
-            <label class="radio-inline"><input type="radio" name="optradio">Ionian<br>(major)</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Dorian<br>(minor)</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Phrygian</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Lydian</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Mixolydian<br>(dominant)</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Aeolian</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Locrian</label>
+      <Form>
+        {['checkbox', 'radio'].map(type => (
+          <div key={`inline-${type}`} className="mb-3">
+            <Form.Check inline label="#" type={type} id={`inline-${type}-1`} />
+            <Form.Check inline label="&#9837" type={type} id={`inline-${type}-2`} />
+            <Form.Check inline label="Major" type={type} id={`inline-${type}-2`} />
+            <Form.Check inline label="Minor" type={type} id={`inline-${type}-2`} />
+            <Form.Check inline label="Ionian (major)" type={type} id={`inline-${type}-2`} />
+            <Form.Check inline label="Dorian (minor)" type={type} id={`inline-${type}-2`} />
+            <Form.Check inline label="Phrygian" type={type} id={`inline-${type}-2`} />
+            <Form.Check inline label="Lydian" type={type} id={`inline-${type}-2`} />
+            <Form.Check inline label="Mixolydian (dominant)" type={type} id={`inline-${type}-2`} />
+            <Form.Check inline label="Aeolian" type={type} id={`inline-${type}-2`} />
+            <Form.Check inline label="Locrian" type={type} id={`inline-${type}-2`} />
           </div>
-        </div>
+        ))}
+      </Form>
       </>
     )
     }
