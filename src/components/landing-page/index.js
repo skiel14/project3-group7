@@ -3,10 +3,10 @@ import './style.css';
 import NavBarComponent from '../navbar'
 
 
-
-const landingPage = () => (<>
- <NavBarComponent />
- <div class="container">
+const Saved = () => {
+  return (<>
+     <NavBarComponent />
+  <div class="container">
     <div class="row">
       <div class="col-md-8">
         <div class="page-header">
@@ -14,7 +14,7 @@ const landingPage = () => (<>
         </div>
         <div class="row">
           <div class="col-md-3">
-            <img src="images/bach-cool-1.jpg" alt="Cool Bach" class="img-thumbnail">
+            <img src="images/bach-cool-1.jpg" alt="Cool Bach" class="img-thumbnail"></img>
           </div>
           <div class="col-md-9">
             <p>
@@ -26,59 +26,56 @@ const landingPage = () => (<>
           </div>
         </div>
       </div>
-      <!--Create Card taking up 4 Columns-->
       <div class="col-md-4">
         <div class="card mt-2">
           <div class="card-body" id="circle-of-fifths">
             <h5 class="card-title">The Circle of Fifths</h5>
             <h6 class="card-subtitle mb-2 text-muted"></h6>
-            <img src="images/circle-of-fifths3.png" alt="Circle of fifths" width="200">
+            <img src="./images/circle-of-fifths3.png" alt="Circle of fifths" width="200"></img>
             <p class="card-text"></p>
           </div>
         </div>
       </div>
-    </div>  <!--  row  -->
+    </div>
 
-    <div class="row">
+    {/* <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-10">
-        <label class="radio-inline"><input type="radio" name="optradio">A</label>
-        <label class="radio-inline"><input type="radio" name="optradio">B</label>
-        <label class="radio-inline"><input type="radio" name="optradio">C</label>
-        <label class="radio-inline"><input type="radio" name="optradio">D</label>
-        <label class="radio-inline"><input type="radio" name="optradio">E</label>
-        <label class="radio-inline"><input type="radio" name="optradio">F</label>
-        <label class="radio-inline"><input type="radio" name="optradio">G</label>
+        <label class="radio-inline"><input type="radio" name="optradio">A</input></label>
+        <label class="radio-inline"><input type="radio" name="optradio">B</input></label>
+        <label class="radio-inline"><input type="radio" name="optradio">C</input></label>
+        <label class="radio-inline"><input type="radio" name="optradio">D</input></label>
+        <label class="radio-inline"><input type="radio" name="optradio">E</input></label>
+        <label class="radio-inline"><input type="radio" name="optradio">F</input></label>
+        <label class="radio-inline"><input type="radio" name="optradio">G</input></label>
       </div>
-    </div>  <!--  row  -->
-
+    </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+          <label class="radio-inline"><input type="radio" name="optradio">#</input></label>
+          <label class="radio-inline"><input type="radio" name="optradio">&#9837</input></label>
+        </div>
+        <div class="col-md-3">
+          <label class="radio-inline"><input type="radio" name="optradio">Major</input></label>
+          <label class="radio-inline"><input type="radio" name="optradio">minor</input></label>
+        </div>
+    </div>
     <div class="row">
       <div class="col-md-2"></div>
-      <div class="col-md-2">
-        <label class="radio-inline"><input type="radio" name="optradio">#</label>
-        <label class="radio-inline"><input type="radio" name="optradio">&#9837</label>
-      </div>
-      <div class="col-md-3">
-        <label class="radio-inline"><input type="radio" name="optradio">Major</label>
-        <label class="radio-inline"><input type="radio" name="optradio">minor</label>
-      </div>
-    </div>  <!--  row  -->
-
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-10">
-        <label class="radio-inline"><input type="radio" name="optradio">Ionian<br>(major)</label>
-        <label class="radio-inline"><input type="radio" name="optradio">Dorian<br>(minor)</label>
-        <label class="radio-inline"><input type="radio" name="optradio">Phrygian</label>
-        <label class="radio-inline"><input type="radio" name="optradio">Lydian</label>
-        <label class="radio-inline"><input type="radio" name="optradio">Mixolydian<br>(dominant)</label>
-        <label class="radio-inline"><input type="radio" name="optradio">Aeolian</label>
-        <label class="radio-inline"><input type="radio" name="optradio">Locrian</label>
-      </div>
-    </div>  <!--  row  -->
-
+        <div class="col-md-10">
+          <label class="radio-inline"><input type="radio" name="optradio">Ionian (major)</input></label>
+          <label class="radio-inline"><input type="radio" name="optradio">Dorian (minor)</input></label>
+          <label class="radio-inline"><input type="radio" name="optradio">Phrygian</input></label>
+          <label class="radio-inline"><input type="radio" name="optradio">Lydian</input></label>
+          <label class="radio-inline"><input type="radio" name="optradio">Mixolydian (dominant)</input></label>
+          <label class="radio-inline"><input type="radio" name="optradio">Aeolian</input></label>
+          <label class="radio-inline"><input type="radio" name="optradio">Locrian</input></label>
+        </div>
+    </div> */}
   </div>
-</>
-)
 
-export default landingPage
+  </>)
+  }
+
+  export default Saved
