@@ -28,6 +28,12 @@ h1, h2, h3, h4, h5, p, label {
 .card-body h5 {
   font-family: medici-text;
 }
+.bach{
+  width: 250px;
+  outline-color: white;
+  outline: 5px;
+
+}
 
 #circle-of-fifths {
   text-align: center;

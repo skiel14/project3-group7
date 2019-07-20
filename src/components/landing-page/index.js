@@ -14,10 +14,10 @@ const Saved = () => {
           <h1>Bach to the Basics</h1>
         </div>
         <div class="row">
-          <div class="col-md-3">
-            <img src="images/bach-cool-1.jpg" alt="Cool Bach" class="img-thumbnail"></img>
+          <div class="col-md-4">
+            <img src="images/bach-cool-1.jpg" alt="Cool Bach" class="bach"></img>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-7">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim, felis ut dictum tristique,
               nibh erat feugiat libero, sit amet fringilla mauris velit in mi. Duis tempus felis vitae
