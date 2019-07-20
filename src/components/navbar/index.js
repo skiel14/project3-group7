@@ -18,7 +18,7 @@ class NavBarComponent extends React.Component {
       <Nav.Link href="/landing">Home</Nav.Link>
       <Nav.Link href="/demo">Practice</Nav.Link>
       <Nav.Link href="/composition">Compose</Nav.Link>
-      <Nav.Link hreft="/saved">Saved</Nav.Link>
+      <Nav.Link href="/saved">Saved</Nav.Link>
     </Nav>
 
     </Navbar>

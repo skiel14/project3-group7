@@ -22,7 +22,7 @@ function App() {
         <Route exact path="/composition" component={CompositionPage} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/landing" component={landingPage} />
-        <Route exact path="/Saved" component={Saved} />
+        <Route exact path="/saved" component={Saved} />
       </Switch>
     </div>
   </Router>
