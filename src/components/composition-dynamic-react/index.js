@@ -8,12 +8,6 @@ import NavBarComponent from '../navbar'
       super(props)
       this.state = {
         NFClientFunctionObjects: {
-          init: function(callback) {
-            if (callback) {
-              callback({
-              });
-            }
-          },
           ScoreView: function(arg0) {
             var PATH_PREFIX = "/embed/";
             
@@ -295,7 +289,6 @@ import NavBarComponent from '../navbar'
         <NavBarComponent />
 
         <div id="noteFlightDiv">TestTest123</div>
-        <button onClick={this.loadAPI.bind(this)}>loadAPI</button>
       </>)
     }
  }
