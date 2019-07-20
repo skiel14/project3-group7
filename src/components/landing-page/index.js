@@ -31,7 +31,7 @@ const Saved = () => {
           <div class="card-body" id="circle-of-fifths">
             <h5 class="card-title">The Circle of Fifths</h5>
             <h6 class="card-subtitle mb-2 text-muted"></h6>
-            <img src="./images/circle-of-fifths3.png" alt="Circle of fifths" width="200"></img>
+            <img src="../../../public/static/circle-of-fifths3.png" alt="Circle of fifths" width="200"></img>
             <p class="card-text"></p>
           </div>
         </div>
