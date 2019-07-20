@@ -38,7 +38,6 @@ const Saved = () => {
           </div>
         </div>
       </div>
-    < RadioBtns />
 </>
 
   )

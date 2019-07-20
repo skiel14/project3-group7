@@ -6,6 +6,8 @@ import DimensionsProvider from '../DimensionsProvider';
 import SoundfontProvider from '../SoundfontProvider';
 import {Carousel, Item} from 'react-bootstrap';
 import NavBarComponent from '../navbar'
+import RadioBtns from '../radio-btns'
+
 
 import './style.css';
 
@@ -111,7 +113,7 @@ const CreateDemoPage = (props) => {
           }, 1000)
         }, 1500)
       }
-    } 
+    }
     recordedArray.push(midiNumber)
     console.log(recordedArray)
   }
@@ -166,6 +168,7 @@ const CreateDemoPage = (props) => {
   <button onClick={function(){}/*playScale*/}>Play Scale</button>
   <button onClick={startGameButton}>Start Game</button>
   <p id="infoBox" className="col-md-6">{infoBox}</p>
+  < RadioBtns />
 
   <div className="wrapper">
     <DimensionsProvider>
