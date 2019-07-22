@@ -32,6 +32,8 @@ const CreateDemoPage = (props) => {
   const [gameState, setGameState] = useState(-1)
   const [scaleState, setScaleState] = useState(0)
   const [gameDisable, setGameDisable] = useState(true)
+  const [radioState11, setRadioState11] = useState("3")
+  const [radioState22, setRadioState22] = useState("1")
 
   const correctNote = ["Great!", "Keep going!", "You got this!", "Wow!", "Sounds good!", "Fantastic!"]
 
@@ -47,6 +49,12 @@ const CreateDemoPage = (props) => {
   const majorScalePattern = [
     0,2,4,5,7,9,11,12
   ]
+
+  //Changes state from radio buttons
+  const radioStateChange = (radioState1, radioState2) => {
+    setRadioState11(radioState1)
+    setRadioState22(radioState2)
+  }
 
   //Advances Slide
   const handleButtonClick = (e) => {
@@ -165,10 +173,10 @@ const CreateDemoPage = (props) => {
 </Carousel>
   </div>
   <button onClick={handleButtonClick}>Advance Slide</button>
-  <button onClick={function(){}/*playScale*/}>Play Scale</button>
+  <button onClick={function(){console.log(radioState11, radioState22)}/*playScale*/}>Play Scale</button>
   <button onClick={startGameButton}>Start Game</button>
   <p id="infoBox" className="col-md-6">{infoBox}</p>
-  < RadioBtns />
+  < RadioBtns radioStateChange={radioStateChange} />
 
   <div className="wrapper">
     <DimensionsProvider>

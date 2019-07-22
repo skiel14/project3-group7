@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import {Nav, Navbar, NavItem, Link, Brand, Button, FormControl, Form} from 'react-bootstrap';
 import './style.css';
 
+var tempSelectedBtn = 3
+var tempSelectedBtn2 = 1
+
 class RadioBtns extends React.Component {
   constructor(props){
     super(props)
@@ -16,14 +19,16 @@ class RadioBtns extends React.Component {
     this.setState({
       selectedBtn: e.target.value
     });
-    console.log(this.state)
+    tempSelectedBtn = e.target.value
+    this.props.radioStateChange(tempSelectedBtn, tempSelectedBtn2)
   };
 
   handleOptionChange2 = e => {
     this.setState({
       selectedBtn2: e.target.value
     });
-    console.log(this.state)
+    tempSelectedBtn2 = e.target.value
+    this.props.radioStateChange(tempSelectedBtn, tempSelectedBtn2)
   };
 
   render(){
