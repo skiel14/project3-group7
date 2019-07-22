@@ -262,33 +262,29 @@ import NavBarComponent from '../navbar'
               role: 'template',
               app: 'html5'
             }
+        },
+        showScore: function(score){
+          console.log(JSON.stringify(score, null, "  "))
         }
       }
     }
 
     componentDidMount(){
-      const script = document.createElement("script");
-
-      script.src = "js/nf.js";
-      script.async = true;
-  
-      document.body.appendChild(script);
-      this.state.NFClientFunctionObjects.ScoreView("noteFlightDiv", 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', this.state.options)
+      this.score1 = new this.state.NFClientFunctionObjects.ScoreView("noteFlightDiv", 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', this.state.options)
     }
 
-    loadAPI = () => {
-        var options = {
-        width: 800,
-        height: 400
-      };
-      console.log("Trying to load NoteFlight")
-      }
+    handleClick = () => {
+
+      this.score1.getScore().done(this.state.showScore)
+    }
 
     render(){
       return(<>
         <NavBarComponent />
-
         <div id="noteFlightDiv">TestTest123</div>
+        <br></br>
+        <br></br>
+        <button onClick={this.handleClick.bind(this)}>Output Score to Console</button>
       </>)
     }
  }
