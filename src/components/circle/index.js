@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Col, Row, Image, Container} from 'react-bootstrap';
 import './style.css';
 
 
