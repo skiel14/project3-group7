@@ -30,6 +30,10 @@ body{
   padding: 15px;
 }
 
+.rounded-circle{
+  margin-left: 100px;
+}
+
 #infoBox {
   display: block;
   margin: auto;
