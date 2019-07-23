@@ -38,7 +38,7 @@ class NavBarComponent extends React.Component {
             }
             else {
                 console.log('invalid token')
-                setTimeout(() => {this.props.history.push('/login')}, 0)
+                this.props.history.push('/login')
             }
         })
     } else{

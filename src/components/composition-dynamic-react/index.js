@@ -1,6 +1,10 @@
 import React from 'react';
-import './style.css';
 import NavBarComponent from '../navbar'
+import {
+    getFromStorage,
+    setInStorage
+} from '../../utils/storage'
+import { withRouter } from 'react-router-dom';
 
 
  class CompositionDynamic extends React.Component {
@@ -162,7 +166,8 @@ import NavBarComponent from '../navbar'
             // Send a message to our iframe
             self.dispatchMessage = function(data) {
               if (typeof(JSON) !== 'undefined') {
-                iframe.contentWindow.postMessage(JSON.stringify(data), urlPrefix);
+                //iframe.contentWindow.postMessage(JSON.stringify(data), urlPrefix);
+                console.log("exception?")
               }
             };
 
@@ -267,14 +272,28 @@ import NavBarComponent from '../navbar'
     }
 
     componentDidMount(){
-      const script = document.createElement("script");
-
-      script.src = "js/nf.js";
-      script.async = true;
-
-      document.body.appendChild(script);
-      this.state.NFClientFunctionObjects.ScoreView("noteFlightDiv", 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', this.state.options)
-      document.getElementById("noteFlightDiv").classList.add("flight")
+      var token = getFromStorage('bach2basics')
+        if (token) {
+            console.log("Token Exists - checking")
+            fetch('https://elegant-bastille-67491.herokuapp.com/api/account/verify?token=' + token)
+            .then(res => res.json())
+            .then(json => {
+                if (json.success) {
+                  this.state.NFClientFunctionObjects.ScoreView("noteFlightDiv", 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', this.state.options)
+                  document.getElementById("noteFlightDiv").classList.add("flight")
+                }
+                else {
+                    console.log('invalid token')
+                    this.props.history.push('/login')
+                }
+            })
+        } else{
+            console.log("no token found")
+            this.setState({
+                isLoading: false,
+            })
+        }
+      
     }
 
     loadAPI = () => {
@@ -294,4 +313,4 @@ import NavBarComponent from '../navbar'
     }
  }
 
-export default CompositionDynamic;
+export default withRouter(CompositionDynamic);
