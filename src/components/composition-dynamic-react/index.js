@@ -267,11 +267,15 @@ import { withRouter } from 'react-router-dom';
               role: 'template',
               app: 'html5'
             }
+        },
+        showScore: function(score){
+          console.log(JSON.stringify(score, null, "  "))
         }
       }
     }
 
     componentDidMount(){
+      
       var token = getFromStorage('bach2basics')
         if (token) {
             console.log("Token Exists - checking")
@@ -293,22 +297,20 @@ import { withRouter } from 'react-router-dom';
                 isLoading: false,
             })
         }
-      
     }
 
-    loadAPI = () => {
-        var options = {
-        width: 800,
-        height: 400
-      };
-      console.log("Trying to load NoteFlight")
-      }
+    handleClick = () => {
+
+      this.score1.getScore().done(this.state.showScore)
+    }
 
     render(){
       return(<>
         <NavBarComponent />
-
         <div id="noteFlightDiv">TestTest123</div>
+        <br></br>
+        <br></br>
+        <button onClick={this.handleClick.bind(this)}>Output Score to Console</button>
       </>)
     }
  }
