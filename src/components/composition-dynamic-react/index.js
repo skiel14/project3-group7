@@ -1,10 +1,6 @@
 import React from 'react';
+import './style.css';
 import NavBarComponent from '../navbar'
-import {
-    getFromStorage,
-    setInStorage
-} from '../../utils/storage'
-import { withRouter } from 'react-router-dom';
 
 
  class CompositionDynamic extends React.Component {
@@ -166,8 +162,7 @@ import { withRouter } from 'react-router-dom';
             // Send a message to our iframe
             self.dispatchMessage = function(data) {
               if (typeof(JSON) !== 'undefined') {
-                //iframe.contentWindow.postMessage(JSON.stringify(data), urlPrefix);
-                console.log("exception?")
+                iframe.contentWindow.postMessage(JSON.stringify(data), urlPrefix);
               }
             };
 
@@ -275,28 +270,8 @@ import { withRouter } from 'react-router-dom';
     }
 
     componentDidMount(){
-      
-      var token = getFromStorage('bach2basics')
-        if (token) {
-            console.log("Token Exists - checking")
-            fetch('https://elegant-bastille-67491.herokuapp.com/api/account/verify?token=' + token)
-            .then(res => res.json())
-            .then(json => {
-                if (json.success) {
-                  this.state.NFClientFunctionObjects.ScoreView("noteFlightDiv", 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', this.state.options)
-                  document.getElementById("noteFlightDiv").classList.add("flight")
-                }
-                else {
-                    console.log('invalid token')
-                    this.props.history.push('/login')
-                }
-            })
-        } else{
-            console.log("no token found")
-            this.setState({
-                isLoading: false,
-            })
-        }
+      this.score1 = new this.state.NFClientFunctionObjects.ScoreView("noteFlightDiv", 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', this.state.options)
+      document.getElementById("noteFlightDiv").classList.add("flight")
     }
 
     handleClick = () => {
@@ -315,4 +290,4 @@ import { withRouter } from 'react-router-dom';
     }
  }
 
-export default withRouter(CompositionDynamic);
+export default CompositionDynamic;
