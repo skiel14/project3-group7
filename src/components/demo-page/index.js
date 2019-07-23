@@ -32,21 +32,34 @@ const CreateDemoPage = (props) => {
   const [gameState, setGameState] = useState(-1)
   const [scaleState, setScaleState] = useState(0)
   const [gameDisable, setGameDisable] = useState(true)
+  const [radioState11, setRadioState11] = useState("3")
+  const [radioState22, setRadioState22] = useState("1")
+  const [scaleStartingNotes, setScaleStartingNotes] = useState([48, 55, 50, 57, 52, 59, 54, 49, 56, 51, 58, 53])
 
   const correctNote = ["Great!", "Keep going!", "You got this!", "Wow!", "Sounds good!", "Fantastic!"]
-
 
   var tempGameState = gameState
   console.log("It rerendered")
   console.log("temp:  " + tempGameState)
   console.log("gamestate:  " + gameState)
-  //cGFDBbAEbEAbBC#F# ---2,2,1,2,2,2,1
-  const scaleStartingNotes = [
-    48,55,53,50,58,57,51,52,54,59,49,53
+
+  //newscale starting notes-- cycle
+  const sharpScaleStartingNotes = [
+    48, 55, 50, 57, 52, 59, 54, 49, 56, 51, 58, 53
   ]
+  const flatScaleStartingNotes = [
+    53, 58, 51, 56, 59, 54, 59, 52, 57, 50, 55, 48
+  ]
+
   const majorScalePattern = [
     0,2,4,5,7,9,11,12
   ]
+
+  //Changes state from radio buttons
+  const radioStateChange = (radioState1, radioState2) => {
+    setRadioState11(radioState1)
+    setRadioState22(radioState2)
+  }
 
   //Advances Slide
   const handleButtonClick = (e) => {
@@ -60,6 +73,12 @@ const CreateDemoPage = (props) => {
   const playScale = (e) => {
     if(!gameDisable){
       setGameDisable(true)
+    }
+    if (radioState22 === "1") {
+      setScaleStartingNotes(sharpScaleStartingNotes)
+    }
+    if (radioState22 === "2") {
+      setScaleStartingNotes(flatScaleStartingNotes)
     }
     setInfoBox("Listen")
     setTimeout(function(){
@@ -76,6 +95,7 @@ const CreateDemoPage = (props) => {
       setTimeout(
         function(){
           var activeNoteArray = []
+          console.log("looking at data:  ", scaleStartingNotes)
           activeNoteArray.push(scaleStartingNotes[tempGameState]+currentValue)
           setActiveNote(activeNoteArray)
         }, (1000*index)
@@ -104,6 +124,10 @@ const CreateDemoPage = (props) => {
         }
       }
       else {
+        console.log("midinumber: ", midiNumber)
+        console.log("scaleStartingNotes:  ", scaleStartingNotes)
+        console.log("tempGameState:  ", tempGameState)
+        console.log("majorscalepattern[scalestate]:  ", majorScalePattern[scaleState])
         setInfoBox("Oops!")
         setGameDisable(true)
         setTimeout(function(){
@@ -165,10 +189,10 @@ const CreateDemoPage = (props) => {
 </Carousel>
   </div>
   <button onClick={handleButtonClick}>Advance Slide</button>
-  <button onClick={function(){}/*playScale*/}>Play Scale</button>
+  <button onClick={function(){console.log(radioState11, radioState22)}/*playScale*/}>Play Scale</button>
   <button onClick={startGameButton}>Start Game</button>
   <p id="infoBox" className="col-md-6">{infoBox}</p>
-  < RadioBtns />
+  < RadioBtns radioStateChange={radioStateChange} />
 
   <div className="wrapper">
     <DimensionsProvider>
