@@ -5,7 +5,8 @@ import 'react-piano/dist/styles.css';
 import DimensionsProvider from '../DimensionsProvider';
 import SoundfontProvider from '../SoundfontProvider';
 import {Carousel, Item} from 'react-bootstrap';
-import NavBarComponent from '../navbar'
+import NavBarComponent from '../navbar';
+import Circle from '../circle';
 import RadioBtns from '../radio-btns'
 
 
@@ -157,7 +158,8 @@ const CreateDemoPage = (props) => {
   return (<>
    <NavBarComponent />
   <div className="charts col-md-6">
-  <Carousel id='bootstrapCarousel' onSelect={triggerNewSlide} activeIndex={slideIndex} fade={true} indicators={false} interval={null} controls={false} data-interval="false">
+    <Circle />
+  {/* <Carousel id='bootstrapCarousel' onSelect={triggerNewSlide} activeIndex={slideIndex} fade={true} indicators={false} interval={null} controls={false} data-interval="false">
   <Carousel.Item>
     <img
       className="d-block"
@@ -186,7 +188,7 @@ const CreateDemoPage = (props) => {
       alt="Fourth slide"
     />
   </Carousel.Item>
-</Carousel>
+</Carousel> */}
   </div>
   <button onClick={handleButtonClick}>Advance Slide</button>
   <button onClick={function(){console.log(radioState11, radioState22)}/*playScale*/}>Play Scale</button>

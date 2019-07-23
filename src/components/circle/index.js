@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Col, Row, Image, Container} from 'react-bootstrap';
-import './style.css';
+
 
 
 const Circle = () => {
@@ -9,7 +9,7 @@ const Circle = () => {
     <Container>
       <Row>
         <Col xs={6} md={4}>
-          <Image src="circle.png" roundedCircle />
+          <Image src="../../../static/circle1.png" width="450px" roundedCircle />
         </Col>
 
       </Row>
