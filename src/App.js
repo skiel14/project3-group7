@@ -14,12 +14,12 @@ function App() {
     <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={LoginPage} />
+        <Route exact path="/login" component={LoginPage} />
         <Route exact path="/newacct" component={CreateAccountPage} />
         <Route exact path="/demo" component={CreateDemoPage} />
         <Route exact path="/composition" component={CompositionPage} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/landing" component={landingPage} />
+        <Route exact path="/test-home" component={Home} />
+        <Route exact path="/" component={landingPage} />
         <Route exact path="/saved" component={Saved} />
       </Switch>
     </div>

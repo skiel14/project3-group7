@@ -44,7 +44,7 @@ class CreateAccountPage extends React.Component {
                 console.log('successful signup')
                 console.log(response.data)
                 document.getElementById('notification').innerHTML = response.data.message
-                setTimeout(() => {this.props.history.push('/')}, 2000)
+                setTimeout(() => {this.props.history.push('/login')}, 2000)
             } else {
                 console.log('Sign-up error')
             }
@@ -56,7 +56,6 @@ class CreateAccountPage extends React.Component {
     render(){
     return (
         <>
-         <NavBarComponent />
             <div className="container">
                 <div className="card card-container">
                     <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
