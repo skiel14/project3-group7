@@ -9,8 +9,8 @@ const Circle = () => {
     <Container>
       <Row>
         <Col xs={6} md={4}>
-          <Image src="../../../static/circle1.png" width="425px" roundedCircle />
-          <Overlay src="../../../static/emptycircle.png" width="425px" roundedCircle />
+          <Image src="../../../static/circle1.png" width="300px" roundedCircle />
+          <Overlay src="../../../static/emptycircle.png" width="300px" roundedCircle />
         </Col>
       </Row>
     </Container>
