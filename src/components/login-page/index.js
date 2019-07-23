@@ -46,7 +46,7 @@ class LoginPage extends React.Component {
                 document.getElementById('notification').innerHTML = response.data.message
                 if(response.data.token){
                     setInStorage('bach2basics', response.data.token)
-                    setTimeout(() => {this.props.history.push('/home')}, 2000)
+                    setTimeout(() => {this.props.history.push('/')}, 2000)
                 }
             } else {
                 console.log('Sign-up error')
@@ -59,7 +59,6 @@ class LoginPage extends React.Component {
     render(){
     return (
         <>
-        <NavBarComponent />
             <div className="container">
                 <div className="card card-container">
                     <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
