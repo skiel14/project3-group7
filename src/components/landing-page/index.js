@@ -18,23 +18,27 @@ const Saved = () => {
         </div>
       </div>
         <div className="row">
-          <div className="col-5">
+          <div className="col-4">
             <Card style={{ width: '23rem' }}>
               <Card.Img variant="top" src="images/bach-cool-1.jpg" ></Card.Img>
+              </Card>
+              </div>
+              <div className="col-8">
+              <Card>
                 <Card.Body>
                   <Card.Text>
-                   Let's get Bach to the Basics! Here you can learn scales, compose your own songs, and more!
+                    Let's get Bach to the Basics! Here you can learn scales, compose your own songs, and more!
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </div>
-          <div className="col-7">
-            <Card style={{ width: '23rem' }}>
+            
+
+            {/* <Card style={{ width: '23rem' }}>
               <Card.Body>
                 <Card.Title>The Circle of Fifths</Card.Title>
                 <Card.Img variant="top" src="images/circle.png" alt="Circle of fifths"></Card.Img>
               </Card.Body>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </div>
