@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-<img width="460" height="100" src="../public/static/bachhome.png">
+<img width="200" height="100" src="public/static/bachhome.png">
 </p>
 
 ## Description
