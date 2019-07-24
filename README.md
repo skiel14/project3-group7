@@ -1,6 +1,51 @@
-# "Bach to Basics”
+# "Bach to Basics” 🎹
 
-https://bach2basics.herokuapp.com/
+
+<p align="center">
+(https://bach2basics.herokuapp.com/)
+</p>
+
+<p align="center">
+<img width="460" height="100" src="../public/static/bachhome.png">
+</p>
+
+## Description
+
+Bach to the Basics allows users to sign up and save songs, practice scales, and compose music. This app uses bcrypt in order to allow users to have their own personal log in. Once logged in they will be able to use a react piano and practice all the major and minor scales. Noteflight API is incorporated into the Compose page and allows the user to compose music and export MIDI files and save their new songs in the database.
+
+![Practice](image.png)
+
+![Compose](image.png)
+
+![Saved](image.png)
+
+## Team Members
+
+* "Danielle Blaney" <https://github.com/DaniBlaney>
+* "Kevin O'Connel" <https://github.com/ko513>
+* "Jon Curto" <https://github.com/Soggytoast111>
+* "Sarah Kiel" <https://github.com/skiel14>
+
+## Built With
+
+* React JS
+* React-piano 
+* Noteflight API
+* Nodejs
+* Mongodb/Mongoose
+* React Bootstrap - The web framework used
+* Router
+* Axios
+* Bcrypt
+
+## Beyond our MVP
+
+* Import MIDI files to practice on the piano
+* And put more stuff here....
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
