@@ -9,16 +9,16 @@ import RadioBtns from '../radio-btns'
 const Saved = () => {
   return (<>
   <NavBarComponent />
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="page-header">
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="page-header">
             <h1>Bach to the Basics</h1>
           </div>
         </div>
       </div>
-        <div class="row">
-          <div class="col-5">
+        <div className="row">
+          <div className="col-5">
             <Card style={{ width: '23rem' }}>
               <Card.Img variant="top" src="images/bach-cool-1.jpg" ></Card.Img>
                 <Card.Body>
@@ -28,7 +28,7 @@ const Saved = () => {
                 </Card.Body>
               </Card>
             </div>
-          <div class="col-7">
+          <div className="col-7">
             <Card style={{ width: '23rem' }}>
               <Card.Body>
                 <Card.Title>The Circle of Fifths</Card.Title>
