@@ -7,6 +7,7 @@ import {
     setInStorage
 } from '../../utils/storage'
 import { withRouter } from 'react-router-dom';
+import './style.css';
 
 var Router = require('react-router');
 
@@ -78,6 +79,11 @@ logout(e) {
       <Nav.Link href="/composition">Compose</Nav.Link>
       <Nav.Link href="/saved">Saved</Nav.Link>
       <Nav.Link onClick={this.logout.bind(this)}>Logout</Nav.Link>
+      <Navbar.Collapse className="usertext">
+      <Navbar.Text>
+      Welcome, {this.state.username}
+      </Navbar.Text>
+      </Navbar.Collapse>
     </Nav>
 
     </Navbar>
