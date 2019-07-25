@@ -4,6 +4,7 @@ import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 import DimensionsProvider from '../DimensionsProvider';
 import SoundfontProvider from '../SoundfontProvider';
+
 import NavBarComponent from '../navbar';
 import Circle from '../circle';
 import Select from 'react-select'
@@ -166,36 +167,6 @@ console.log("It rerendered")
    <NavBarComponent />
   <div className="charts col-md-6">
     <Circle />
-  {/* <Carousel id='bootstrapCarousel' onSelect={triggerNewSlide} activeIndex={slideIndex} fade={true} indicators={false} interval={null} controls={false} data-interval="false">
-  <Carousel.Item>
-    <img
-      className="d-block"
-      src="../../../static/Cmajor.png"
-      alt="First slide"
-    />
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block"
-      src="../../../static/Dmajor.png"
-      alt="Second slide"
-    />
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block"
-      src="../../../static/Emajor.png"
-      alt="Third slide"
-    />
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block"
-      src="../../../static/Fmajor.png"
-      alt="Fourth slide"
-    />
-  </Carousel.Item>
-</Carousel> */}
   </div>
  
   <button onClick={startGameButton}>Demo Scale</button>

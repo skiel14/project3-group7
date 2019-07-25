@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Col, Row, Image, Container} from 'react-bootstrap';
+import {Col, Row, Image, Container, Overlay} from 'react-bootstrap';
 
 
 
@@ -9,9 +9,9 @@ const Circle = () => {
     <Container>
       <Row>
         <Col xs={6} md={4}>
-          <Image src="../../../static/circle1.png" width="450px" roundedCircle />
+          <Image src="../../../static/circle1.png" width="300px" roundedCircle />
+          <Overlay src="../../../static/emptycircle.png" width="300px" roundedCircle />
         </Col>
-
       </Row>
     </Container>
   </>
