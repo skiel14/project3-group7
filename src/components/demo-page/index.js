@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 import DimensionsProvider from '../DimensionsProvider';
 import SoundfontProvider from '../SoundfontProvider';
-import {Carousel, Item, Button} from 'react-bootstrap';
+import { Carousel, Item, Button } from 'react-bootstrap';
 import NavBarComponent from '../navbar';
 import Circle from '../circle';
 import RadioBtns from '../radio-btns'
@@ -53,7 +53,7 @@ const CreateDemoPage = (props) => {
   ]
 
   const majorScalePattern = [
-    0,2,4,5,7,9,11,12
+    0, 2, 4, 5, 7, 9, 11, 12
   ]
 
   //Changes state from radio buttons
@@ -67,12 +67,12 @@ const CreateDemoPage = (props) => {
     triggerNewSlide()
   }
   const triggerNewSlide = (e) => {
-    setSlideIndex(slideIndex+1)
+    setSlideIndex(slideIndex + 1)
   }
 
   //Plays the scales
   const playScale = (e) => {
-    if(!gameDisable){
+    if (!gameDisable) {
       setGameDisable(true)
     }
     if (radioState22 === "1") {
@@ -82,43 +82,44 @@ const CreateDemoPage = (props) => {
       setScaleStartingNotes(flatScaleStartingNotes)
     }
     setInfoBox("Listen")
-    setTimeout(function(){
+    setTimeout(function () {
       setGameDisable(false)
       setInfoBox("Now you try!")
     }, 8035)
     console.log("current game state of playScale:  " + tempGameState)
     console.log("actual state variable:  " + gameState)
-    setTimeout(function(){
+    setTimeout(function () {
       setActiveNote(null)
-    },8000)
+    }, 8000)
     majorScalePattern.map(
-      function(currentValue, index) {
-      setTimeout(
-        function(){
-          var activeNoteArray = []
-          console.log("looking at data:  ", scaleStartingNotes)
-          activeNoteArray.push(scaleStartingNotes[tempGameState]+currentValue)
-          setActiveNote(activeNoteArray)
-        }, (1000*index)
-      )}
+      function (currentValue, index) {
+        setTimeout(
+          function () {
+            var activeNoteArray = []
+            console.log("looking at data:  ", scaleStartingNotes)
+            activeNoteArray.push(scaleStartingNotes[tempGameState] + currentValue)
+            setActiveNote(activeNoteArray)
+          }, (1000 * index)
+        )
+      }
     )
   }
 
   //Takes Keyboard input while game is active
   var recordedArray = []
   const recordNote = (midiNumber) => {
-    if(!gameDisable){
-      if (midiNumber == scaleStartingNotes[tempGameState]+ majorScalePattern[scaleState]) {
-        setScaleState(scaleState+1)
+    if (!gameDisable) {
+      if (midiNumber == scaleStartingNotes[tempGameState] + majorScalePattern[scaleState]) {
+        setScaleState(scaleState + 1)
         var displayPat = correctNote[Math.floor(Math.random() * correctNote.length)]
         setInfoBox(displayPat)
         if (scaleState == 7) {
           setGameDisable(true)
           setInfoBox("Wow great job!  Onto the next scale...")
-          setTimeout(function(){
+          setTimeout(function () {
             setScaleState(0)
             tempGameState++
-            setGameState(gameState +1)
+            setGameState(gameState + 1)
             triggerNewSlide()
             playScale()
           }, 1500)
@@ -131,9 +132,9 @@ const CreateDemoPage = (props) => {
         console.log("majorscalepattern[scalestate]:  ", majorScalePattern[scaleState])
         setInfoBox("Oops!")
         setGameDisable(true)
-        setTimeout(function(){
+        setTimeout(function () {
           setScaleState(0)
-          setTimeout(function(){
+          setTimeout(function () {
             scaleGame()
           }, 1000)
         }, 1500)
@@ -156,41 +157,41 @@ const CreateDemoPage = (props) => {
   }
 
   return (<>
-   <NavBarComponent />
-  <div className="charts col-md-6">
-    <Circle />
-  </div>
-  <button onClick={handleButtonClick}>Advance Slide</button>
-  <button onClick={function(){console.log(radioState11, radioState22)}/*playScale*/}>Play Scale</button>
-  <button onClick={startGameButton}>Start Game</button>
-  <p id="infoBox" className="col-md-6">{infoBox}</p>
-  < RadioBtns radioStateChange={radioStateChange} />
+    <NavBarComponent />
+    <div className="charts col-md-6">
+      <Circle />
+    </div>
+    <button onClick={handleButtonClick}>Advance Slide</button>
+    <button onClick={function () { console.log(radioState11, radioState22) }/*playScale*/}>Play Scale</button>
+    <button onClick={startGameButton}>Start Game</button>
+    <p id="infoBox" className="col-md-6">{infoBox}</p>
+    < RadioBtns radioStateChange={radioStateChange} />
 
-  <div className="wrapper">
-    <DimensionsProvider>
-      {({ containerWidth, containerHeight }) => (
-        <SoundfontProvider
-          instrumentName="acoustic_grand_piano"
-          audioContext={audioContext}
-          hostname={soundfontHostname}
-          render={({ isLoading, playNote, stopNote }) => (
-            <Piano
-              noteRange={noteRange}
-              width={containerWidth}
-              playNote={playNote}
-              stopNote={stopNote}
-              disabled={isLoading}
-              activeNotes={activeNote}
-              keyboardShortcuts={keyboardShortcuts}
-              onPlayNoteInput={recordNote}
-              {...props}
-            />
-          )}
-        />
-      )}
-    </DimensionsProvider>
-  </div>
-</>
+    <div className="wrapper">
+      <DimensionsProvider>
+        {({ containerWidth, containerHeight }) => (
+          <SoundfontProvider
+            instrumentName="acoustic_grand_piano"
+            audioContext={audioContext}
+            hostname={soundfontHostname}
+            render={({ isLoading, playNote, stopNote }) => (
+              <Piano
+                noteRange={noteRange}
+                width={containerWidth}
+                playNote={playNote}
+                stopNote={stopNote}
+                disabled={isLoading}
+                activeNotes={activeNote}
+                keyboardShortcuts={keyboardShortcuts}
+                onPlayNoteInput={recordNote}
+                {...props}
+              />
+            )}
+          />
+        )}
+      </DimensionsProvider>
+    </div>
+  </>
   );
 }
 

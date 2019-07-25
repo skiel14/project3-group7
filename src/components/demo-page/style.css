@@ -31,7 +31,8 @@ body{
 }
 
 .rounded-circle{
-  margin-left: 125px;
+  margin: auto !important;
+  /* padding: auto !important; */
 }
 
 #infoBox {
