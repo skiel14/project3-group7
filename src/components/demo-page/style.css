@@ -40,3 +40,19 @@ body{
   text-align: center;
   font-size: 35px;
 }
+
+.dropdown1 {
+  width: 100px;
+}
+
+.dropdown2 {
+  width: 300px;
+}
+
+.drop1container {
+  z-index: 9999;
+}
+
+.drop2container {
+  z-index: 9998;
+}

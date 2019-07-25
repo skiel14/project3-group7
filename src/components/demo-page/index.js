@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 import DimensionsProvider from '../DimensionsProvider';
 import SoundfontProvider from '../SoundfontProvider';
-import {Carousel, Item, Button} from 'react-bootstrap';
+
 import NavBarComponent from '../navbar';
 import Circle from '../circle';
-import RadioBtns from '../radio-btns'
+import Select from 'react-select'
 
 
 import './style.css';
@@ -27,77 +27,94 @@ const keyboardShortcuts = KeyboardShortcuts.create({
 });
 
 const CreateDemoPage = (props) => {
-  const [slideIndex, setSlideIndex] = useState(0);
   const [activeNote, setActiveNote] = useState(null)
   const [infoBox, setInfoBox] = useState("Testing")
-  const [gameState, setGameState] = useState(-1)
   const [scaleState, setScaleState] = useState(0)
   const [gameDisable, setGameDisable] = useState(true)
-  const [radioState11, setRadioState11] = useState("3")
-  const [radioState22, setRadioState22] = useState("1")
-  const [scaleStartingNotes, setScaleStartingNotes] = useState([48, 55, 50, 57, 52, 59, 54, 49, 56, 51, 58, 53])
+  const [modeValue, setModeValue] = useState(0)
+  const [startingNoteValue, setStartingNoteValue] = useState(0)
+  
+  //Cycle of fifths notes
+  const scaleStartingNotes = [48, 55, 50, 57, 52, 59, 54, 49, 56, 51, 58, 53]
 
   const correctNote = ["Great!", "Keep going!", "You got this!", "Wow!", "Sounds good!", "Fantastic!"]
 
-  var tempGameState = gameState
-  console.log("It rerendered")
-  console.log("temp:  " + tempGameState)
-  console.log("gamestate:  " + gameState)
+    //Circle of Fifths
+    const scaleCircle = [
+      48, 55, 50, 57, 52, 59, 54, 49, 56, 51, 58, 53
+    ]
+  
+    const scalePatterns = [
+      [0,2,4,5,7,9,11,12],
+      [0,2,3,5,7,9,10,12],
+      [0,1,3,5,7,8,10,12],
+      [0,2,4,6,7,9,11,12],
+      [0,2,4,5,7,9,10,12],
+      [0,2,3,5,7,8,10,12],
+      [0,1,3,5,6,8,10,12],
+    ]
 
-  //newscale starting notes-- cycle
-  const sharpScaleStartingNotes = [
-    48, 55, 50, 57, 52, 59, 54, 49, 56, 51, 58, 53
-  ]
-  const flatScaleStartingNotes = [
-    53, 58, 51, 56, 59, 54, 59, 52, 57, 50, 55, 48
-  ]
 
-  const majorScalePattern = [
-    0,2,4,5,7,9,11,12
-  ]
 
-  //Changes state from radio buttons
-  const radioStateChange = (radioState1, radioState2) => {
-    setRadioState11(radioState1)
-    setRadioState22(radioState2)
+
+const dropdownNotes = [
+  { value: '0', label: 'C' },
+  { value: '1', label: 'G' },
+  { value: '2', label: 'D' },
+  { value: '3', label: 'A' },
+  { value: '4', label: 'E' },
+  { value: '5', label: 'B' },
+  { value: '6', label: 'F#(G'+ String.fromCharCode(9837) + ')' },
+  { value: '7', label: 'C#(D'+String.fromCharCode(9837) + ')' },
+  { value: '8', label: 'A'+String.fromCharCode(9837) },
+  { value: '9', label: 'E'+String.fromCharCode(9837) },
+  { value: '10', label: 'B'+String.fromCharCode(9837) },
+  { value: '11', label: 'F' }
+]
+
+const dropdownModes = [
+  { value: '0', label: 'Ionian (major)' },           
+  { value: '1', label: 'Dorian (minor)' },
+  { value: '2', label: 'Phrygian' },
+  { value: '3', label: 'Lydian' },
+  { value: '4', label: 'Mixolydian (dominant)' },
+  { value: '5', label: 'Aeolian' },
+  { value: '6', label: 'Locrian' }
+]
+
+console.log("It rerendered")
+
+
+  const assignStartingNote = (e) => {
+    setStartingNoteValue(e.value)
+    console.log("Note:  ", e.value)
   }
 
-  //Advances Slide
-  const handleButtonClick = (e) => {
-    triggerNewSlide()
+  const assignMode = (e) => {
+    setModeValue(e.value)
+    console.log("mode: ", e.value)
   }
-  const triggerNewSlide = (e) => {
-    setSlideIndex(slideIndex+1)
-  }
+
 
   //Plays the scales
   const playScale = (e) => {
     if(!gameDisable){
       setGameDisable(true)
     }
-    if (radioState22 === "1") {
-      setScaleStartingNotes(sharpScaleStartingNotes)
-    }
-    if (radioState22 === "2") {
-      setScaleStartingNotes(flatScaleStartingNotes)
-    }
     setInfoBox("Listen")
     setTimeout(function(){
       setGameDisable(false)
       setInfoBox("Now you try!")
     }, 8035)
-    console.log("current game state of playScale:  " + tempGameState)
-    console.log("actual state variable:  " + gameState)
     setTimeout(function(){
       setActiveNote(null)
     },8000)
-    majorScalePattern.map(
+    scalePatterns[modeValue].map(
       function(currentValue, index) {
       setTimeout(
         function(){
           var activeNoteArray = []
-          console.log("looking at data:  ", scaleStartingNotes)
-          activeNoteArray.push(scaleStartingNotes[tempGameState]+currentValue)
+          activeNoteArray.push(scaleCircle[startingNoteValue]+currentValue)
           setActiveNote(activeNoteArray)
         }, (1000*index)
       )}
@@ -108,27 +125,20 @@ const CreateDemoPage = (props) => {
   var recordedArray = []
   const recordNote = (midiNumber) => {
     if(!gameDisable){
-      if (midiNumber == scaleStartingNotes[tempGameState]+ majorScalePattern[scaleState]) {
+      if (midiNumber == scaleStartingNotes[startingNoteValue]+ scalePatterns[modeValue][scaleState]) {
         setScaleState(scaleState+1)
         var displayPat = correctNote[Math.floor(Math.random() * correctNote.length)]
         setInfoBox(displayPat)
         if (scaleState == 7) {
           setGameDisable(true)
-          setInfoBox("Wow great job!  Onto the next scale...")
-          setTimeout(function(){
-            setScaleState(0)
-            tempGameState++
-            setGameState(gameState +1)
-            triggerNewSlide()
-            playScale()
-          }, 1500)
+          setInfoBox("Wow great job!")
+          setTimeout(function(){setInfoBox("--")},2000)
+          setScaleState(0)
         }
       }
       else {
         console.log("midinumber: ", midiNumber)
         console.log("scaleStartingNotes:  ", scaleStartingNotes)
-        console.log("tempGameState:  ", tempGameState)
-        console.log("majorscalepattern[scalestate]:  ", majorScalePattern[scaleState])
         setInfoBox("Oops!")
         setGameDisable(true)
         setTimeout(function(){
@@ -145,8 +155,6 @@ const CreateDemoPage = (props) => {
 
   //Starts game from button click
   const startGameButton = () => {
-    tempGameState++
-    setGameState(tempGameState)
     scaleGame()
   }
 
@@ -160,12 +168,20 @@ const CreateDemoPage = (props) => {
   <div className="charts col-md-6">
     <Circle />
   </div>
-  <button onClick={handleButtonClick}>Advance Slide</button>
-  <button onClick={function(){console.log(radioState11, radioState22)}/*playScale*/}>Play Scale</button>
-  <button onClick={startGameButton}>Start Game</button>
+ 
+  <button onClick={startGameButton}>Demo Scale</button>
+  <button /*onClick={}*/>Play Jingle</button>
   <p id="infoBox" className="col-md-6">{infoBox}</p>
-  < RadioBtns radioStateChange={radioStateChange} />
-
+  <div className="row">
+    <div className="col-3"></div>
+    <div className="col-3 drop1container">
+      <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />
+    </div>
+    <div className="col-3 drop2container">
+      <Select defaultValue={{ label: "Ionian (major)", value: 0 }} aria-label="Mode" className="dropdown2" onChange={assignMode} options={dropdownModes} />
+    </div>
+    <div className="col-3"></div>
+  </div>
   <div className="wrapper">
     <DimensionsProvider>
       {({ containerWidth, containerHeight }) => (
