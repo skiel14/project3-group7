@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import {Card, CardImg, CardBody, CardText} from 'react-bootstrap';
+import {Card, CardImg, CardBody, CardText, Col} from 'react-bootstrap';
 import NavBarComponent from '../navbar'
 import RadioBtns from '../radio-btns'
 
@@ -18,7 +18,7 @@ const Saved = () => {
         </div>
       </div>
         <div className="row">
-          <div className="col-4">
+          <div className="Col-4">
             <Card style={{ width: '23rem' }}>
               <Card.Img variant="top" src="images/bach-cool-1.jpg" ></Card.Img>
               </Card>

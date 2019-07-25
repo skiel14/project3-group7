@@ -8,8 +8,8 @@ const Circle = () => {
   return (<>
     <Container>
       <Row>
-        <Col xs={6} md={4}>
-          <Image src="../../../static/circle1.png" width="300px" roundedCircle />
+        <Col className='text-center'>
+          <Image src="../../../static/circle1.png" width="300px" fluid />
           <Overlay src="../../../static/emptycircle.png" width="300px" roundedCircle />
         </Col>
       </Row>
