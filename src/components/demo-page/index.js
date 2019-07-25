@@ -33,7 +33,7 @@ const CreateDemoPage = (props) => {
   const [gameDisable, setGameDisable] = useState(true)
   const [modeValue, setModeValue] = useState(0)
   const [startingNoteValue, setStartingNoteValue] = useState(0)
-  
+
   //Cycle of fifths notes
   const scaleStartingNotes = [48, 55, 50, 57, 52, 59, 54, 49, 56, 51, 58, 53]
 
@@ -43,7 +43,7 @@ const CreateDemoPage = (props) => {
     const scaleCircle = [
       48, 55, 50, 57, 52, 59, 54, 49, 56, 51, 58, 53
     ]
-  
+
     const scalePatterns = [
       [0,2,4,5,7,9,11,12],
       [0,2,3,5,7,9,10,12],
@@ -73,7 +73,7 @@ const dropdownNotes = [
 ]
 
 const dropdownModes = [
-  { value: '0', label: 'Ionian (major)' },           
+  { value: '0', label: 'Ionian (major)' },
   { value: '1', label: 'Dorian (minor)' },
   { value: '2', label: 'Phrygian' },
   { value: '3', label: 'Lydian' },
@@ -165,10 +165,10 @@ console.log("It rerendered")
 
   return (<>
    <NavBarComponent />
-  <div className="charts col-md-6">
+  <div className="charts col-md-6 text-center">
     <Circle />
   </div>
- 
+
   <button onClick={startGameButton}>Demo Scale</button>
   <button /*onClick={}*/>Play Jingle</button>
   <p id="infoBox" className="col-md-6">{infoBox}</p>
