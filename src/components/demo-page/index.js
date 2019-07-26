@@ -55,9 +55,6 @@ const CreateDemoPage = (props) => {
       [0,1,3,5,6,8,10,12],
     ]
 
-
-
-
 const dropdownNotes = [
   { value: '0', label: 'C' },
   { value: '1', label: 'G' },
@@ -82,6 +79,65 @@ const dropdownModes = [
   { value: '5', label: 'Aeolian' },
   { value: '6', label: 'Locrian' }
 ]
+
+//MUSIC JINGLE DATA START
+const jingleSongData = [
+  {
+    songTitle: "Let it Be",
+    songArtist: "The Beatles",
+    songRootNote: 53,
+    songNotes: [null,  0,  0,  0,  0,  2, -3,  0,  0,  5,  7,null,  9,  9,  9,  9, 10,  9,  9,null,  9,  9,  8,  9,  9,  8,null,  9,  7,   5, null],
+    songNoteDurations: [0, 2571,429,429,429,429,429,429,429,429,214,214, 429,286,286,715,429,429,429,429, 429,214,429,429,429,429,644, 429,214,214,1714]
+  },
+  {
+    songTitle: "Scarborough Fair",
+    songArtist: "Simon & Garfunkel",
+    songRootNote: 52,
+    songNotes: [   0,  0,  7,   7,  7,   3,  4,  3,   0,null,  7, 10,  12, 12, 10, 12, 10,   7, null],
+    songNoteDurations: [0, 1714,857,429,1714,429,1286,429,857,5142, 857,857,857,1714,857,857,857,857,3428]
+  },
+  {
+    songTitle: "White Rabbit",
+    songArtist: "Jefferson Airplane",
+    songRootNote: 49,
+    songNotes: [  0,   0,  1,  0,  1,   0,  0, -1,  -1, -1,  1,  -1,  4,  4,  0,   0,  1,  0,  1,   0,  0,  0, -1, -1, -1,  1,  -1, null],
+    songNoteDurations: [0, 600,1200,300,300,300,1500,600,600,1200,300,300,1800,300,300,600,1200,300,300,600,1200,600,600,900,300,300,300,1800]
+  },
+  {
+    songTitle: "The Simpsons",
+    songArtist: "Danny Elfman",
+    songRootNote: 48,
+    songNotes: [  0,  4,  6,  9,  7,  4,  0, -3, -6, -6, -6, -4,null, -6, -6, -6, -5, -2, null],
+    songNoteDurations: [0, 527,351,351,176,527,351,351,176,176,176,176,527, 527,176,176,176,176,527]
+  },
+  {
+    songTitle: "The Wreck of the Edmund Fitzgerald",
+    songArtist: "Gordon Lightfoot",
+    songRootNote: 47,
+    songNotes: [  7, 12, 12, 12,  12,  14, 12, 10,  7,  7,  7,   7,  7,  9, 10, 10,  10, 9,  7,  5,   7,   0, null],
+    songNoteDurations: [0, 423,845,423,845,1268,1268,423,423,423,845,845,1690,423,423,845,845,845,845,845,423,1268,1690]
+  },
+  {
+    songTitle: "Crazy Train",
+    songArtist: "Ozzy Osbourne",
+    songRootNote: 54,
+    songNotes: [0,0,7,0,8,0,7,0,5,3,2,3,5,3,2,3,0,0,7,0,8,0,7,0,5,3,2,3,5,3,2,3, null],
+    songNoteDurations: [0, 218,218,218,218,218,218,218,218.218,218,218,218,218,218,218,218.218,218,218,218,218,218,218,218.218,218,218,218,218,218,218,218]
+  },
+  {
+    songTitle: "Army of Me",
+    songArtist: "Bjork",
+    songRootNote: 46,
+    songNotes: [  0,  1,  0,  8,  6,  0,  1,  0,  1,  0,  8,  6,  0,  1,   3,  0,  4,null,   4,  6,  4,  4,  3,  3,null,   3,  0,  4,  4,  4,null,  6,  4,  3, null],
+    songNoteDurations: [0, 211,211,211,211,211,211,422,211,211,211,211,211,211,422, 635,635,635,2535, 635,635,635,635,635,635,2535, 635,635,141,141,141,2353,635,635,1690]
+  }
+]
+//MUSIC JINGLE DATA END
+
+
+
+
+
 
 console.log("It rerendered")
 
@@ -122,6 +178,49 @@ console.log("It rerendered")
     )
   }
 
+  const playJingle = (e) => {
+  var jingleTime = 0
+    setInfoBox("Listen to this!")
+    jingleSongData[modeValue].songNotes.map(
+      function(currentValue, index) {
+        console.log("current index value", index)
+        console.log("jingley", jingleSongData[modeValue].songNoteDurations[index])
+      jingleTime += jingleSongData[modeValue].songNoteDurations[index]
+      console.log("jingletime!", jingleTime)
+      if (currentValue === null){
+        setTimeout(
+          function(){
+            var activeNoteArray = []
+            console.log("Setting NULL!")
+            activeNoteArray.push(0)
+            setActiveNote(activeNoteArray)
+          }, (jingleTime)
+        )
+      }
+      else {
+      setTimeout(
+        function(){
+          var activeNoteArray = []
+          console.log(jingleSongData[modeValue].songRootNote + currentValue)
+          activeNoteArray.push(jingleSongData[modeValue].songRootNote + currentValue)
+          setActiveNote(activeNoteArray)
+        }, (jingleTime+20)
+      )
+      setTimeout(
+        function(){
+          var activeNoteArray = []
+          activeNoteArray.push(null)
+          setActiveNote(activeNoteArray)
+        }, (jingleTime)
+      )
+    }
+    }
+)}
+
+
+
+
+
   //Takes Keyboard input while game is active
   var recordedArray = []
   const recordNote = (midiNumber) => {
@@ -145,7 +244,7 @@ console.log("It rerendered")
         setTimeout(function(){
           setScaleState(0)
           setTimeout(function(){
-            scaleGame()
+            playScale()
           }, 1000)
         }, 1500)
       }
@@ -156,12 +255,11 @@ console.log("It rerendered")
 
   //Starts game from button click
   const startGameButton = () => {
-    scaleGame()
+    playScale()
   }
 
-  //Demos a scale and waits for response
-  function scaleGame() {
-    playScale()
+  const playJingleButton = () => {
+    playJingle()
   }
 
   return (<>
@@ -174,7 +272,7 @@ console.log("It rerendered")
     <Row className="form-row text-center">
       <Col>
         <Button className="buttons" variant="light" onClick={startGameButton}>Demo Scale</Button>
-        <Button className="buttons" variant="light"/*onClick={}*/>Play Jingle</Button>
+        <Button className="buttons" variant="light" onClick={playJingleButton}>Play Jingle</Button>
       </Col>
     </Row>
   <Row>
