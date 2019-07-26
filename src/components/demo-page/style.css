@@ -30,10 +30,6 @@ body{
   padding: 15px;
 }
 
-/* .rounded-circle{
-  margin-left: 125px;
-} */
-
 #infoBox {
   display: block;
   margin: 15px;
@@ -42,6 +38,7 @@ body{
 }
 .buttons{
   margin-right: 10px;
+  margin-top: 50px;
 }
 .dropdown1 {
   width: 100px;
