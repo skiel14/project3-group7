@@ -169,6 +169,10 @@ console.log("It rerendered")
    <Row>
       <Col className="charts md-6">
         <Circle />
+      </Col>
+      </Row>
+      <Row className="form-row text-center">
+      <Col>
         <Button variant="light" onClick={startGameButton}>Demo Scale</Button>
         <Button variant="light"/*onClick={}*/>Play Jingle</Button>
       </Col>
@@ -179,13 +183,13 @@ console.log("It rerendered")
     </Col>
   </Row>
   <Row>
-    <Col></Col>
     <Col className="drop1container">
       <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />
     </Col>
     <Col drop2container>
       <Select defaultValue={{ label: "Ionian (major)", value: 0 }} aria-label="Mode" className="dropdown2" onChange={assignMode} options={dropdownModes} />
     </Col>
+    <Col></Col>
     <Col></Col>
   </Row>
   <div className="wrapper">
