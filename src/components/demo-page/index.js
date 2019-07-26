@@ -5,8 +5,10 @@ import 'react-piano/dist/styles.css';
 import DimensionsProvider from '../DimensionsProvider';
 import SoundfontProvider from '../SoundfontProvider';
 import {Col, Row, Image, Container, Overlay, Button} from 'react-bootstrap';
+import YouTube from 'react-youtube';
 import NavBarComponent from '../navbar';
 import Circle from '../circle';
+import Video from '../video';
 import Select from 'react-select'
 
 
@@ -267,6 +269,9 @@ console.log("It rerendered")
    <Row>
       <Col className="charts md-6">
         <Circle />
+      </Col>
+      <Col>
+        <Video />
       </Col>
     </Row>
     <Row className="form-row text-center">
