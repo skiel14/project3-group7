@@ -1,6 +1,8 @@
 import React from 'react';
 import './style.css';
 import NavBarComponent from '../navbar'
+import {Col, Row, Container, Button} from 'react-bootstrap';
+
 
 
  class CompositionDynamic extends React.Component {
@@ -285,7 +287,7 @@ import NavBarComponent from '../navbar'
         <div id="noteFlightDiv">TestTest123</div>
         <br></br>
         <br></br>
-        <button onClick={this.handleClick.bind(this)}>Output Score to Console</button>
+        <Button onClick={this.handleClick.bind(this)}>Output Score to Console</Button>
       </>)
     }
  }
