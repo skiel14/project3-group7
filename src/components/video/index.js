@@ -14,8 +14,8 @@ const Video  = () => {
             url='https://youtu.be/cITjLbNdgys'
             className='react-player'
             playing
-            width='100%'
-            height='100%'
+            // width='100%'
+            // height='100%'
           />
         </Col>
     </Container>
