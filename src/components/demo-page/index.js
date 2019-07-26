@@ -4,13 +4,14 @@ import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 import DimensionsProvider from '../DimensionsProvider';
 import SoundfontProvider from '../SoundfontProvider';
-
+import {Col, Row, Image, Container, Overlay, Button} from 'react-bootstrap';
 import NavBarComponent from '../navbar';
 import Circle from '../circle';
 import Select from 'react-select'
 
 
 import './style.css';
+import { cpus } from 'os';
 
 // webkitAudioContext fallback needed to support Safari
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -165,23 +166,32 @@ console.log("It rerendered")
 
   return (<>
    <NavBarComponent />
-  <div className="charts col-md-6 text-center">
-    <Circle />
-  </div>
-
-  <button onClick={startGameButton}>Demo Scale</button>
-  <button /*onClick={}*/>Play Jingle</button>
-  <p id="infoBox" className="col-md-6">{infoBox}</p>
-  <div className="row">
-    <div className="col-3"></div>
-    <div className="col-3 drop1container">
-      <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />
-    </div>
-    <div className="col-3 drop2container">
-      <Select defaultValue={{ label: "Ionian (major)", value: 0 }} aria-label="Mode" className="dropdown2" onChange={assignMode} options={dropdownModes} />
-    </div>
-    <div className="col-3"></div>
-  </div>
+   <Row>
+      <Col className="charts md-6">
+        <Circle />
+      </Col>
+    </Row>
+    <Row className="form-row text-center">
+      <Col>
+        <Button className="buttons" variant="light" onClick={startGameButton}>Demo Scale</Button>
+        <Button className="buttons" variant="light"/*onClick={}*/>Play Jingle</Button>
+      </Col>
+    </Row>
+  <Row>
+    <Col>
+      <p id="infoBox" className="infobox md-6">{infoBox}</p>
+    </Col>
+  </Row>
+    <Row>
+      <Col className="drop1container">
+        <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />
+      </Col>
+      <Col className="drop2container">
+        <Select defaultValue={{ label: "Ionian (major)", value: 0 }} aria-label="Mode" className="dropdown2" onChange={assignMode} options={dropdownModes} />
+      </Col>
+      <Col></Col>
+      <Col></Col>
+    </Row>
   <div className="wrapper">
     <DimensionsProvider>
       {({ containerWidth, containerHeight }) => (

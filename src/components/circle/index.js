@@ -9,7 +9,7 @@ const Circle = () => {
     <Container>
       <Row>
         <Col className='text-center'>
-          <Image src="../../../static/circle1.png" width="300px" fluid />
+          <Image src="../../../static/circle5th.png" width="300px" fluid />
           <Overlay src="../../../static/emptycircle.png" width="300px" fluid />
         </Col>
       </Row>
