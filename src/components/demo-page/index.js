@@ -4,13 +4,14 @@ import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 import DimensionsProvider from '../DimensionsProvider';
 import SoundfontProvider from '../SoundfontProvider';
-
+import {Col, Row, Image, Container, Overlay, Button} from 'react-bootstrap';
 import NavBarComponent from '../navbar';
 import Circle from '../circle';
 import Select from 'react-select'
 
 
 import './style.css';
+import { cpus } from 'os';
 
 // webkitAudioContext fallback needed to support Safari
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -33,7 +34,7 @@ const CreateDemoPage = (props) => {
   const [gameDisable, setGameDisable] = useState(true)
   const [modeValue, setModeValue] = useState(0)
   const [startingNoteValue, setStartingNoteValue] = useState(0)
-  
+
   //Cycle of fifths notes
   const scaleStartingNotes = [48, 55, 50, 57, 52, 59, 54, 49, 56, 51, 58, 53]
 
@@ -43,7 +44,7 @@ const CreateDemoPage = (props) => {
     const scaleCircle = [
       48, 55, 50, 57, 52, 59, 54, 49, 56, 51, 58, 53
     ]
-  
+
     const scalePatterns = [
       [0,2,4,5,7,9,11,12],
       [0,2,3,5,7,9,10,12],
@@ -70,7 +71,7 @@ const dropdownNotes = [
 ]
 
 const dropdownModes = [
-  { value: '0', label: 'Ionian (major)' },           
+  { value: '0', label: 'Ionian (major)' },
   { value: '1', label: 'Dorian (minor)' },
   { value: '2', label: 'Phrygian' },
   { value: '3', label: 'Lydian' },
@@ -263,25 +264,32 @@ console.log("It rerendered")
 
   return (<>
    <NavBarComponent />
-  <div className="charts col-md-6">
-    <Circle />
-  </div>
- 
-  <button onClick={startGameButton}>Demo Scale</button>
-  <button onClick={playJingleButton}>Play Jingle</button>
-
-  <p id="infoBox" className="col-md-6">{infoBox}</p>
-
-  <div className="row">
-    <div className="col-3"></div>
-    <div className="col-3 drop1container">
-      <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />
-    </div>
-    <div className="col-3 drop2container">
-      <Select defaultValue={{ label: "Ionian (major)", value: 0 }} aria-label="Mode" className="dropdown2" onChange={assignMode} options={dropdownModes} />
-    </div>
-    <div className="col-3"></div>
-  </div>
+   <Row>
+      <Col className="charts md-6">
+        <Circle />
+      </Col>
+    </Row>
+    <Row className="form-row text-center">
+      <Col>
+        <Button className="buttons" variant="light" onClick={startGameButton}>Demo Scale</Button>
+        <Button className="buttons" variant="light" onClick={playJingleButton}>Play Jingle</Button>
+      </Col>
+    </Row>
+  <Row>
+    <Col>
+      <p id="infoBox" className="infobox md-6">{infoBox}</p>
+    </Col>
+  </Row>
+    <Row>
+      <Col className="drop1container">
+        <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />
+      </Col>
+      <Col className="drop2container">
+        <Select defaultValue={{ label: "Ionian (major)", value: 0 }} aria-label="Mode" className="dropdown2" onChange={assignMode} options={dropdownModes} />
+      </Col>
+      <Col></Col>
+      <Col></Col>
+    </Row>
   <div className="wrapper">
     <DimensionsProvider>
       {({ containerWidth, containerHeight }) => (
