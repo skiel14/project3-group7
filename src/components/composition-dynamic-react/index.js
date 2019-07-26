@@ -287,7 +287,7 @@ import {Col, Row, Container, Button} from 'react-bootstrap';
         <div id="noteFlightDiv">TestTest123</div>
         <br></br>
         <br></br>
-        <Button onClick={this.handleClick.bind(this)}>Output Score to Console</Button>
+        <Button className="output" variant="light" onClick={this.handleClick.bind(this)}>Output Score to Console</Button>
       </>)
     }
  }
