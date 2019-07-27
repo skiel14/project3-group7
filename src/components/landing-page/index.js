@@ -3,7 +3,8 @@ import './style.css';
 import {Card, CardImg, CardBody, CardText, Col, Row, Container, Image} from 'react-bootstrap';
 import NavBarComponent from '../navbar'
 import RadioBtns from '../radio-btns'
-
+import { rollIn } from 'react-animations';
+import anime from 'animejs'
 
 
 const Saved = () => {
@@ -13,7 +14,7 @@ const Saved = () => {
       <Row>
         <Col md={12}>
           <div className="page-header">
-            <h1>Bach to Basics</h1>
+            <h1 className="m12">Bach to Basics</h1>
           </div>
         </Col>
       </Row>
