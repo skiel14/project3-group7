@@ -11,22 +11,27 @@ const Saved = () => {
   <NavBarComponent />
     <Container>
       <Row>
-      <Col md={4}>
-        <Image width="150px" src="images/bach-cool-1.jpg"></Image>
-      </Col>
-        <Col md={8}>
+        <Col md={12}>
           <div className="page-header">
-            <h1>Bach to the Basics</h1>
+            <h1>Bach to Basics</h1>
           </div>
         </Col>
       </Row>
         <Row>
           <Col md={4}>
-            <Card style={{ width: '23rem' }}>
+            <Card style={{ width: '20rem' }}>
               <Card.Img variant="top" src="images/bach-cool-1.jpg" ></Card.Img>
             </Card>
           </Col>
-            <Col md={4}>
+          {/* <Col md={4}>
+            <Card style={{ width: '20rem' }}>
+              <Card.Body>
+                <Card.Title>Cats jammin out</Card.Title>
+                <Card.Img variant="top" src="images/cat.gif" alt="Cat"></Card.Img>
+              </Card.Body>
+            </Card>
+          </Col> */}
+          <Col md={8}>
               <Card>
                 <Card.Body>
                   <Card.Text>
@@ -34,14 +39,6 @@ const Saved = () => {
                   </Card.Text>
                 </Card.Body>
               </Card>
-          </Col>
-            <Col md={4}>
-            <Card style={{ width: '23rem' }}>
-              <Card.Body>
-                <Card.Title>Cats jammin out</Card.Title>
-                <Card.Img variant="top" src="images/cat.gif" alt="Cat"></Card.Img>
-              </Card.Body>
-            </Card>
           </Col>
         </Row>
         <Row>
@@ -69,6 +66,7 @@ const Saved = () => {
             <Card>
               <Card.Body>
                 <Card.Title className="howTo">How to Read Sheet Music: An Intro to Reading Piano Notes</Card.Title>
+                <br></br>
                   <Card.Subtitle>Step 1: Label white spaces with FACE and EGBDF for the treble clef</Card.Subtitle>
                   <Card.Text>This is the staff that shows which notes to play with your right hand. If you are learning for the first time, you must familiarize yourself with the letter names of the lines and spaces. On your staff paper, label the white spaces with FACE starting with the first space at the bottom of the page and going up, then the lines EGBDF starting at the bottom line going to the top line. There are little tricks to help you remember the names of the lines and spaces – for example, just remember the phrase “Every Good Boy Deserves Fudge.” Work on memorizing this a little bit each day.</Card.Text>
                   <Card.Img src="images/face.png" alt="trebleclef"></Card.Img>

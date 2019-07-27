@@ -34,6 +34,10 @@ h1 {
   font-family: sans-serif;
   color: #eddcb0;
 }
+.bachimg{
+  margin: 15px;
+  padding: auto;
+}
 .card-body h5 {
   font-family: medici-text;
 }
@@ -63,3 +67,4 @@ label.radio-inline {
 input {
   margin-right: 7px;
 }
+/*text animation*/
