@@ -265,6 +265,7 @@ console.log("It rerendered")
 
   return (<>
    <NavBarComponent />
+   <div className="container-fluid">
    <Row>
       <Col md={5} className="charts">
         <Circle />
@@ -284,39 +285,41 @@ console.log("It rerendered")
       <p id="infoBox" className="infobox">{infoBox}</p>
     </Col>
   </Row>
-    <Row>
-      <Col className="drop1container">
-        <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />
-      </Col>
-      <Col className="drop2container">
-        <Select defaultValue={{ label: "Ionian (major)", value: 0 }} aria-label="Mode" className="dropdown2" onChange={assignMode} options={dropdownModes} />
-      </Col>
-      <Col></Col>
-      <Col></Col>
-    </Row>
-  <div className="wrapper">
-    <DimensionsProvider>
-      {({ containerWidth, containerHeight }) => (
-        <SoundfontProvider
-          instrumentName="acoustic_grand_piano"
-          audioContext={audioContext}
-          hostname={soundfontHostname}
-          render={({ isLoading, playNote, stopNote }) => (
-            <Piano
-              noteRange={noteRange}
-              width={containerWidth}
-              playNote={playNote}
-              stopNote={stopNote}
-              disabled={isLoading}
-              activeNotes={activeNote}
-              keyboardShortcuts={keyboardShortcuts}
-              onPlayNoteInput={recordNote}
-              {...props}
-            />
-          )}
-        />
-      )}
-    </DimensionsProvider>
+      <Row>
+        <Col className="drop1container">
+          <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />
+        </Col>
+        <Col className="drop2container">
+          <Select defaultValue={{ label: "Ionian (major)", value: 0 }} aria-label="Mode" className="dropdown2" onChange={assignMode} options={dropdownModes} />
+        </Col>
+        <Col></Col>
+        <Col></Col>
+      </Row>
+    <div className="wrapper">
+      <DimensionsProvider>
+        {({ containerWidth, containerHeight }) => (
+          <SoundfontProvider
+            instrumentName="acoustic_grand_piano"
+            audioContext={audioContext}
+            hostname={soundfontHostname}
+            render={({ isLoading, playNote, stopNote }) => (
+              <Piano
+                noteRange={noteRange}
+                width={containerWidth}
+                playNote={playNote}
+                stopNote={stopNote}
+                disabled={isLoading}
+                activeNotes={activeNote}
+                keyboardShortcuts={keyboardShortcuts}
+                onPlayNoteInput={recordNote}
+                {...props}
+              />
+
+            )}
+          />
+        )}
+      </DimensionsProvider>
+    </div>
   </div>
 </>
   );
