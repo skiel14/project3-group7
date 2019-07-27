@@ -14,16 +14,16 @@ const Saved = () => {
       <Row>
         <Col md={12}>
           <div className="page-header">
-            <h1 className="m12">Bach to Basics</h1>
+            <h1 className="bachh">Bach to Basics</h1>
           </div>
         </Col>
       </Row>
         <Row>
-          <Col md={4}>
+          {/* <Col md={4}>
             <Card style={{ width: '20rem' }}>
               <Card.Img variant="top" src="images/bach-cool-1.jpg" ></Card.Img>
             </Card>
-            </Col>
+            </Col> */}
             {/* <Col md={4}>
               <Card style={{ width: '20rem' }}>
                 <Card.Body>
@@ -32,7 +32,11 @@ const Saved = () => {
                 </Card.Body>
               </Card>
             </Col> */}
-            <Col md={7}>
+        </Row>
+      </Jumbotron>
+       <Container>
+         <Row>
+         <Col md={12}>
                 <Card>
                   <Card.Body>
                     <Card.Text>
@@ -41,12 +45,10 @@ const Saved = () => {
                   </Card.Body>
                 </Card>
             </Col>
-        </Row>
-      </Jumbotron>
-       <Container>
+         </Row>
         <Row>
           <Col md={6}>
-            <Card className="h-100">
+            <Card className="h-100 bodies">
               <Card.Body>
                 <Card.Title className="howTo">The Mental Flip Strategy for Reading Music Notes</Card.Title>
                 <Card.Text>You must flip the orientation of the sheet music in front of you mentally, so you can read the vertical orientation of the notes.

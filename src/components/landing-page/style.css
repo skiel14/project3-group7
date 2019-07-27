@@ -12,6 +12,7 @@
 
 .mainjumbo{
   background-image: url("/images/abstract.jpg");
+  opacity: .75;
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
@@ -20,8 +21,6 @@
 
 .card {
   background-color: transparent;
-  display: flex;
-  flex-wrap: wrap;
 }
 .card-horizontal {
   flex-direction: row;
@@ -29,6 +28,13 @@
 
 h1, h2, h3, h4, h5, p, label {
   color: #eddcb0;
+}
+.bachh{
+  color:#ba8b17;
+}
+.bodies{
+  /* background-color: #a3707e; */
+  box-shadow: 5px solid;
 }
 .card-title{
   font-family: medici-text;
