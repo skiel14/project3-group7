@@ -266,10 +266,10 @@ console.log("It rerendered")
   return (<>
    <NavBarComponent />
    <Row>
-      <Col className="charts md-6">
+      <Col md={5} className="charts">
         <Circle />
       </Col>
-      <Col>
+      <Col md={7}>
         <Video />
       </Col>
     </Row>
@@ -280,8 +280,8 @@ console.log("It rerendered")
       </Col>
     </Row>
   <Row>
-    <Col>
-      <p id="infoBox" className="infobox md-6">{infoBox}</p>
+    <Col md={6}>
+      <p id="infoBox" className="infobox">{infoBox}</p>
     </Col>
   </Row>
     <Row>
