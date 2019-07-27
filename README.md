@@ -6,16 +6,35 @@
 </p>
 
 <p align="center">
-<img width="200" height="100" src="public/static/bachhome.png">
+<img src="public/static/bachhhome.png">
 </p>
 
 ## Description
 
 Bach to the Basics allows users to sign up and save songs, practice scales, and compose music. This app uses bcrypt in order to allow users to have their own personal log in. Once logged in they will be able to use a react piano and practice all the major and minor scales. Noteflight API is incorporated into the Compose page and allows the user to compose music and export MIDI files and save their new songs in the database.
 
-![Practice](image.png)
+## Here we go
+Let's get Bach to the Basics! What are scales? Modes? Chords? What do they sound like? What are they good for? Why should I learn them?
 
-![Compose](image.png)
+Bach to the Basics lets you explore the “Fun” -damentals of music in a fun and interactive way.
+On the “Practice and Learn” page you can listen to chords and scales, hear famous melodies that use them, and interact with the music to learn and to try out new ideas.
+On the Compose page you can create your own music, and do other cool stuff.
+
+### Home Page
+
+![Home Page](public/static/home2.png)
+
+![Home cont](public/static/home3.png)
+
+### Practice Page
+
+![Practice](public/static/practice.png)
+
+![Practice Cont](public/static/practicepiano.png)
+
+### Compose Page
+
+![Compose](public/static/compose.png)
 
 ![Saved](image.png)
 
