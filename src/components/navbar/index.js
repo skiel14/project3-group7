@@ -16,7 +16,8 @@ class NavBarComponent extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      isLoading: true
+      isLoading: true,
+      songs: ["a", "b", "c"]
     }
   }
 
@@ -36,6 +37,31 @@ class NavBarComponent extends React.Component {
                     username: json.username,
                     isLoading: false
                 })
+                /*
+                this.setState(state => {
+                  const list = state.songs.concat("abcdefg");
+            
+                  return {
+                    list
+                  };
+                });
+                */
+                json.songs.forEach(function(item,index){
+
+                  /*
+                  this.setState(function(state){
+                      const list = state.list.concat(state.value);
+                
+                      return {
+                        list,
+                        value: '',
+                      };
+                  })
+                  */
+                  console.log(item.songId)
+                  console.log(item.songJSONString)
+                })
+
             }
             else {
                 console.log('invalid token')
@@ -71,6 +97,12 @@ logout(e) {
   render(){
     return(
       <>
+      <div>{this.state.songs}</div>
+      <button onClick={() => {
+        let x = this.state.songs.concat('asdfsfdddddd')
+        this.setState({songs: x });
+        console.log(this.state);
+      }}>button</button>
     <Navbar sticky="top" bg="dark" variant="dark">
     <Navbar.Brand href="/">Bach2Basics</Navbar.Brand>
     <Nav className="justify-content-end">
