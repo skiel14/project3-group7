@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import {Card, CardImg, CardBody, CardText, Col, Row, Container, Image} from 'react-bootstrap';
+import {Card, CardImg, CardBody, CardText, Col, Row, Container, Image, Jumbotron} from 'react-bootstrap';
 import NavBarComponent from '../navbar'
 import RadioBtns from '../radio-btns'
 import { rollIn } from 'react-animations';
@@ -23,24 +23,24 @@ const Saved = () => {
             <Card style={{ width: '20rem' }}>
               <Card.Img variant="top" src="images/bach-cool-1.jpg" ></Card.Img>
             </Card>
-          </Col>
-          {/* <Col md={4}>
-            <Card style={{ width: '20rem' }}>
-              <Card.Body>
-                <Card.Title>Cats jammin out</Card.Title>
-                <Card.Img variant="top" src="images/cat.gif" alt="Cat"></Card.Img>
-              </Card.Body>
-            </Card>
-          </Col> */}
-          <Col md={8}>
-              <Card>
+            </Col>
+            {/* <Col md={4}>
+              <Card style={{ width: '20rem' }}>
                 <Card.Body>
-                  <Card.Text>
-                    Let's get Bach to the Basics! What are scales? Where should I start? Here you can learn scales, compose your own songs, and more! Learn the "Fun" damentals on our Practice page!!
-                  </Card.Text>
+                  <Card.Title>Cats jammin out</Card.Title>
+                  <Card.Img variant="top" src="images/cat.gif" alt="Cat"></Card.Img>
                 </Card.Body>
               </Card>
-          </Col>
+            </Col> */}
+            <Col md={8}>
+                <Card>
+                  <Card.Body>
+                    <Card.Text>
+                      Let's get Bach to the Basics! What are scales? Where should I start? Here you can learn scales, compose your own songs, and more! Learn the "Fun" damentals on our Practice page!!
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+            </Col>
         </Row>
        <Container fluid>
         <Row>
