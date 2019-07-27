@@ -36,15 +36,15 @@ const Saved = () => {
       </Jumbotron>
        <Container>
          <Row>
-         <Col md={12}>
-                <Card>
-                  <Card.Body>
-                    <Card.Text>
-                      Let's get Bach to the Basics! What are scales? Where should I start? Here you can learn scales, compose your own songs, and more! Learn the "Fun" damentals on our Practice page!!
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-            </Col>
+          <Col md={12}>
+            <Card className="marge">
+              <Card.Body>
+                <Card.Text className="strip">
+                  Let's get Bach to the Basics! What are scales? Where should I start? Here you can learn scales, compose your own songs, and more! Learn the "Fun" damentals on our Practice page!!
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
          </Row>
         <Row>
           <Col md={6}>

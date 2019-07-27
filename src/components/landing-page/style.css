@@ -31,6 +31,7 @@ h1, h2, h3, h4, h5, p, label {
 }
 .bachh{
   color:#ba8b17;
+  text-shadow: 2px 2px 5px white;
 }
 .bodies{
   /* background-color: #a3707e; */
@@ -71,6 +72,14 @@ h1 {
   width: 250px;
   outline-color: white;
   outline: 5px;
+}
+.strip{
+  font-size: 20px;
+  text-align: center;
+}
+
+.marge{
+  margin-top: 5px;
 }
 
 #circle-of-fifths {
