@@ -55,7 +55,7 @@ const Saved = () => {
                     In order to begin to think about and practice this mental flip, there is an extremely helpful strategy you can use. You can actually turn the sheet music so you are reading the notes down the page. Doing so allows you to more easily understand the spacing between the notes and more intuitively grasp where your fingers should be placed on the keys. This technique is also incredibly helpful for visualizing the grand staff as a whole and where the octaves on the keyboard are located.
 
                     In order to properly perform this strategy and learn how to read sheet music for piano, follow these three simple steps:</Card.Text>
-
+                
                     <Card.Text>1. Take your original sheet music and flip it clockwise. The line of music you’re working on playing should be read down the page, from top to bottom, instead of across the page.</Card.Text>
 
                     <Card.Text>2. Begin to identify chord units and think about each measure in terms of chordal units. Most bars or measures of beginning piano music contain one or two chords. Sometimes these chords are arpeggiated, other times there is an alternation pattern of notes in the treble and bass in quick succession. Your success with this technique depends on your ability to identify which chord is being outlined. To do this, simply name the notes. In beginning sheet music you’ll most likely see either major or minor triads.</Card.Text>
