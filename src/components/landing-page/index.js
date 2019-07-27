@@ -11,19 +11,19 @@ const Saved = () => {
   <NavBarComponent />
     <Container>
       <Row>
-        <Col className="md-12">
+        <Col md={12}>
           <div className="page-header">
             <h1>Bach to the Basics</h1>
           </div>
         </Col>
       </Row>
         <Row>
-          <Col className="md-4">
+          <Col md={4}>
             <Card style={{ width: '23rem' }}>
               <Card.Img variant="top" src="images/bach-cool-1.jpg" ></Card.Img>
             </Card>
           </Col>
-            <Col className="md-8">
+            <Col md={8}>
               <Card>
                 <Card.Body>
                   <Card.Text>
@@ -34,7 +34,7 @@ const Saved = () => {
           </Col>
         </Row>
         <Row>
-          <Col className="col-12">
+          <Col md={12}>
             <Card style={{ width: '23rem' }}>
               <Card.Body>
                 <Card.Title>Cats jammin out</Card.Title>
