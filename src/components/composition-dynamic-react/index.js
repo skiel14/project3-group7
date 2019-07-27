@@ -2,6 +2,11 @@ import React from 'react';
 import './style.css';
 import NavBarComponent from '../navbar'
 import {Col, Row, Container, Button} from 'react-bootstrap';
+import axios from 'axios';
+import {
+    getFromStorage,
+    setInStorage
+} from '../../utils/storage'
 
 
 
@@ -267,6 +272,16 @@ import {Col, Row, Container, Button} from 'react-bootstrap';
         },
         showScore: function(score){
           console.log(JSON.stringify(score, null, "  "))
+          console.log("here is your username:  ", this.state.username)
+          axios.post('https://elegant-bastille-67491.herokuapp.com/api/song/create',
+          {
+              username: this.state.username,
+              songname: "testname101",
+              songJSON: JSON.stringify(score, null, "  ")
+          })
+          .then(response => {
+              console.log(response)
+          })
         }
       }
     }
@@ -274,11 +289,30 @@ import {Col, Row, Container, Button} from 'react-bootstrap';
     componentDidMount(){
       this.score1 = new this.state.NFClientFunctionObjects.ScoreView("noteFlightDiv", 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', this.state.options)
       document.getElementById("noteFlightDiv").classList.add("flight")
+
+      var token = getFromStorage('bach2basics')
+      if (token) {
+          console.log("Token Exists - checking")
+          fetch('https://elegant-bastille-67491.herokuapp.com/api/account/verify?token=' + token)
+          .then(res => res.json())
+          .then(json => {
+              if (json.success) {
+                  console.log("here is json")
+                  console.log(json)
+                  this.setState({
+                      token,
+                      userId: json.userId,
+                      username: json.username,
+                      isLoading: false
+                  })
+              }
+          })
+        }
     }
 
     handleClick = () => {
 
-      this.score1.getScore().done(this.state.showScore)
+      this.score1.getScore().done(this.state.showScore.bind(this))
     }
 
     render(){
