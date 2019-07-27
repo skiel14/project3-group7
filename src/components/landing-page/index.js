@@ -10,7 +10,7 @@ import anime from 'animejs'
 const Saved = () => {
   return (<>
   <NavBarComponent />
-    <Container>
+    <Jumbotron fluid className="mainjumbo">
       <Row>
         <Col md={12}>
           <div className="page-header">
@@ -32,7 +32,7 @@ const Saved = () => {
                 </Card.Body>
               </Card>
             </Col> */}
-            <Col md={8}>
+            <Col md={7}>
                 <Card>
                   <Card.Body>
                     <Card.Text>
@@ -42,7 +42,8 @@ const Saved = () => {
                 </Card>
             </Col>
         </Row>
-       <Container fluid>
+      </Jumbotron>
+       <Container>
         <Row>
           <Col md={6}>
             <Card className="h-100">
@@ -85,7 +86,6 @@ const Saved = () => {
             </Card>
           </Col>
         </Row>
-        </Container>
       </Container>
 </>
 
