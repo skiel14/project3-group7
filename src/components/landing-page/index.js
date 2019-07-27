@@ -42,9 +42,10 @@ const Saved = () => {
               </Card>
           </Col>
         </Row>
+       <Container fluid>
         <Row>
           <Col md={6}>
-            <Card>
+            <Card className="h-100">
               <Card.Body>
                 <Card.Title className="howTo">The Mental Flip Strategy for Reading Music Notes</Card.Title>
                 <Card.Text>You must flip the orientation of the sheet music in front of you mentally, so you can read the vertical orientation of the notes.
@@ -64,22 +65,27 @@ const Saved = () => {
             </Card>
           </Col>
           <Col md={6}>
-            <Card>
+            <Card className="h-100">
               <Card.Body>
                 <Card.Title className="howTo">How to Read Sheet Music: An Intro to Reading Piano Notes</Card.Title>
-                <br></br>
+                  <br></br>
                   <Card.Subtitle>Step 1: Label white spaces with FACE and EGBDF for the treble clef</Card.Subtitle>
+                  <br></br>
                   <Card.Text>This is the staff that shows which notes to play with your right hand. If you are learning for the first time, you must familiarize yourself with the letter names of the lines and spaces. On your staff paper, label the white spaces with FACE starting with the first space at the bottom of the page and going up, then the lines EGBDF starting at the bottom line going to the top line. There are little tricks to help you remember the names of the lines and spaces – for example, just remember the phrase “Every Good Boy Deserves Fudge.” Work on memorizing this a little bit each day.</Card.Text>
                   <Card.Img src="images/face.png" alt="trebleclef"></Card.Img>
                   <br></br>
+                  <Card.Subtitle>Step 2: Memorize letter names, and move onto bass clef</Card.Subtitle>
                   <br></br>
-                  <Card.Subtitle>Step 2: Name your spaces ACEGB and GBDFA move on to bass clef</Card.Subtitle>
+                  <Card.Text>After you’ve memorized all of the letter names on the lines and spaces for your right hand (the treble clef), you can move on to reading piano notes on the bass clef, where the notes on the lines and spaces will be played with your left hand.</Card.Text>
+                  <Card.Subtitle>Step 3: Name your spaces ACEGB and GBDFA move on to bass clef</Card.Subtitle>
+                  <br></br>
                   <Card.Text>Practice drawing the bass clef, which will start on the F line. Then with the spaces at the bottom of the page, name your spaces ACEGB (remember “All Cows Eat Grass,” and don’t forget to add your B at the top!). Next, name your lines starting at the bottom of the page GBDFA (“Good Boys Deserve Fudge Always”). Memorize these notations as well. Now transfer these letter names of the lines and spaces to your piano song from step #2, and name all the notes with your left hand in the bass clef.</Card.Text>
                   <Card.Img src="images/acegb.png" alt="bassclef"></Card.Img>
               </Card.Body>
             </Card>
           </Col>
         </Row>
+        </Container>
       </Container>
 </>
 

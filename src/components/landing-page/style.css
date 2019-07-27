@@ -12,6 +12,8 @@
 
 .card {
   background-color: transparent;
+  display: flex;
+  flex-wrap: wrap;
 }
 .card-horizontal {
   flex-direction: row;
@@ -23,6 +25,15 @@ h1, h2, h3, h4, h5, p, label {
 .card-title{
   font-family: medici-text;
   text-align: center;
+}
+.card-body{
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  width: 100%;
+}
+.card-text{
+  flex: 1 0 auto;
 }
 h1 {
   font-family: medici-text;
@@ -68,4 +79,3 @@ input {
   margin-right: 7px;
 }
 /*text animation*/
-
