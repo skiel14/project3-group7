@@ -265,58 +265,61 @@ console.log("It rerendered")
 
   return (<>
    <NavBarComponent />
-   <Row>
-      <Col className="charts md-6">
-        <Circle />
-      </Col>
-      <Col>
-        <Video />
-      </Col>
-    </Row>
-    <Row className="form-row text-center">
-      <Col>
-        <Button className="buttons" variant="light" onClick={startGameButton}>Demo Scale</Button>
-        <Button className="buttons" variant="light" onClick={playJingleButton}>Play Jingle</Button>
-      </Col>
-    </Row>
-  <Row>
-    <Col>
-      <p id="infoBox" className="infobox md-6">{infoBox}</p>
-    </Col>
-  </Row>
+   <div className="container-fluid">
     <Row>
-      <Col className="drop1container">
-        <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />
+        <Col className="charts md-6">
+          <Circle />
+        </Col>
+        <Col>
+          <Video />
+        </Col>
+      </Row>
+      <Row className="form-row text-center">
+        <Col>
+          <Button className="buttons" variant="light" onClick={startGameButton}>Demo Scale</Button>
+          <Button className="buttons" variant="light" onClick={playJingleButton}>Play Jingle</Button>
+        </Col>
+      </Row>
+    <Row>
+      <Col>
+        <p id="infoBox" className="infobox md-6">{infoBox}</p>
       </Col>
-      <Col className="drop2container">
-        <Select defaultValue={{ label: "Ionian (major)", value: 0 }} aria-label="Mode" className="dropdown2" onChange={assignMode} options={dropdownModes} />
-      </Col>
-      <Col></Col>
-      <Col></Col>
     </Row>
-  <div className="wrapper">
-    <DimensionsProvider>
-      {({ containerWidth, containerHeight }) => (
-        <SoundfontProvider
-          instrumentName="acoustic_grand_piano"
-          audioContext={audioContext}
-          hostname={soundfontHostname}
-          render={({ isLoading, playNote, stopNote }) => (
-            <Piano
-              noteRange={noteRange}
-              width={containerWidth}
-              playNote={playNote}
-              stopNote={stopNote}
-              disabled={isLoading}
-              activeNotes={activeNote}
-              keyboardShortcuts={keyboardShortcuts}
-              onPlayNoteInput={recordNote}
-              {...props}
-            />
-          )}
-        />
-      )}
-    </DimensionsProvider>
+      <Row>
+        <Col className="drop1container">
+          <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />
+        </Col>
+        <Col className="drop2container">
+          <Select defaultValue={{ label: "Ionian (major)", value: 0 }} aria-label="Mode" className="dropdown2" onChange={assignMode} options={dropdownModes} />
+        </Col>
+        <Col></Col>
+        <Col></Col>
+      </Row>
+    <div className="wrapper">
+      <DimensionsProvider>
+        {({ containerWidth, containerHeight }) => (
+          <SoundfontProvider
+            instrumentName="acoustic_grand_piano"
+            audioContext={audioContext}
+            hostname={soundfontHostname}
+            render={({ isLoading, playNote, stopNote }) => (
+              <Piano
+                noteRange={noteRange}
+                width={containerWidth}
+                playNote={playNote}
+                stopNote={stopNote}
+                disabled={isLoading}
+                activeNotes={activeNote}
+                keyboardShortcuts={keyboardShortcuts}
+                onPlayNoteInput={recordNote}
+                {...props}
+              />
+
+            )}
+          />
+        )}
+      </DimensionsProvider>
+    </div>
   </div>
 </>
   );
