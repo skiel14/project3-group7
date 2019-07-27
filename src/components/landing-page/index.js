@@ -10,20 +10,20 @@ import anime from 'animejs'
 const Saved = () => {
   return (<>
   <NavBarComponent />
-    <Container>
+    <Jumbotron fluid className="mainjumbo">
       <Row>
         <Col md={12}>
           <div className="page-header">
-            <h1 className="m12">Bach to Basics</h1>
+            <h1 className="bachh">Bach to Basics</h1>
           </div>
         </Col>
       </Row>
         <Row>
-          <Col md={4}>
+          {/* <Col md={4}>
             <Card style={{ width: '20rem' }}>
               <Card.Img variant="top" src="images/bach-cool-1.jpg" ></Card.Img>
             </Card>
-            </Col>
+            </Col> */}
             {/* <Col md={4}>
               <Card style={{ width: '20rem' }}>
                 <Card.Body>
@@ -32,20 +32,23 @@ const Saved = () => {
                 </Card.Body>
               </Card>
             </Col> */}
-            <Col md={8}>
-                <Card>
-                  <Card.Body>
-                    <Card.Text>
-                      Let's get Bach to the Basics! What are scales? Where should I start? Here you can learn scales, compose your own songs, and more! Learn the "Fun" damentals on our Practice page!!
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-            </Col>
         </Row>
-       <Container fluid>
+      </Jumbotron>
+       <Container>
+         <Row>
+          <Col md={12}>
+            <Card className="marge">
+              <Card.Body>
+                <Card.Text className="strip">
+                  Let's get Bach to the Basics! What are scales? Where should I start? Here you can learn scales, compose your own songs, and more! Bach to Basics lets you explore the “Fun” -damentals of music in a fun and interactive way.!!
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+         </Row>
         <Row>
           <Col md={6}>
-            <Card className="h-100">
+            <Card className="h-100 bodies">
               <Card.Body>
                 <Card.Title className="howTo">The Mental Flip Strategy for Reading Music Notes</Card.Title>
                 <Card.Text>You must flip the orientation of the sheet music in front of you mentally, so you can read the vertical orientation of the notes.
@@ -85,7 +88,6 @@ const Saved = () => {
             </Card>
           </Col>
         </Row>
-        </Container>
       </Container>
 </>
 
