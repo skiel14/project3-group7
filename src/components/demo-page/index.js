@@ -266,25 +266,25 @@ console.log("It rerendered")
   return (<>
    <NavBarComponent />
    <div className="container-fluid">
-    <Row>
-        <Col className="charts md-6">
-          <Circle />
-        </Col>
-        <Col>
-          <Video />
-        </Col>
-      </Row>
-      <Row className="form-row text-center">
-        <Col>
-          <Button className="buttons" variant="light" onClick={startGameButton}>Demo Scale</Button>
-          <Button className="buttons" variant="light" onClick={playJingleButton}>Play Jingle</Button>
-        </Col>
-      </Row>
-    <Row>
-      <Col>
-        <p id="infoBox" className="infobox md-6">{infoBox}</p>
+   <Row>
+      <Col md={5} className="charts">
+        <Circle />
+      </Col>
+      <Col md={7}>
+        <Video />
       </Col>
     </Row>
+    <Row className="form-row text-center">
+      <Col>
+        <Button className="buttons" variant="light" onClick={startGameButton}>Demo Scale</Button>
+        <Button className="buttons" variant="light" onClick={playJingleButton}>Play Jingle</Button>
+      </Col>
+    </Row>
+  <Row>
+    <Col md={6}>
+      <p id="infoBox" className="infobox">{infoBox}</p>
+    </Col>
+  </Row>
       <Row>
         <Col className="drop1container">
           <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />

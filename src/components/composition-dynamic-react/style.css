@@ -7,9 +7,13 @@ body, html {
 .flight{
   align-self: center;
   margin-top: 25px;
-  margin-left: 200px;
+  margin-left: 150px;
   }
 
 .output{
   margin-left: 200px;
+}
+#noteFlightDiv{
+  width: 75%;
+  height: 460px;
 }
