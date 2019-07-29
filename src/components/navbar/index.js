@@ -89,7 +89,6 @@ logout(e) {
   render(){
     return(
       <>
-      <div>{this.state.songs}</div>
     <Navbar sticky="top" bg="dark" variant="dark">
     <Navbar.Brand href="/">Bach2Basics</Navbar.Brand>
     <Nav className="justify-content-end">
