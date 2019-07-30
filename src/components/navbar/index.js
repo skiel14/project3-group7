@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Nav, Navbar, NavItem, Link, Brand, Button, FormControl, Form} from 'react-bootstrap';
+import {Nav, Navbar, Dropdown, ButtonGroup, NavItem, Link, Brand, Button, FormControl, Form} from 'react-bootstrap';
 import axios from 'axios';
 import {
     getFromStorage,
@@ -16,7 +16,8 @@ class NavBarComponent extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      isLoading: true
+      isLoading: true,
+      songs: []
     }
   }
 
@@ -36,6 +37,23 @@ class NavBarComponent extends React.Component {
                     username: json.username,
                     isLoading: false
                 })
+                /*
+                this.setState(state => {
+                  const list = state.songs.concat("abcdefg");
+            
+                  return {
+                    list
+                  };
+                });
+                */
+                json.songs.forEach((item,index)=>{
+                    let x = this.state.songs.concat(item.songId)
+                    this.setState({songs: x });
+                  
+                  console.log(item.songId)
+                  console.log(item.songJSONString)
+                })
+
             }
             else {
                 console.log('invalid token')
@@ -75,8 +93,30 @@ logout(e) {
     <Navbar.Brand href="/">Bach2Basics</Navbar.Brand>
     <Nav className="justify-content-end">
       <Nav.Link href="/">Home</Nav.Link>
-      <Nav.Link href="/demo">Practice</Nav.Link>
-      <Nav.Link href="/composition">Compose</Nav.Link>
+      <Dropdown as={ButtonGroup}>
+      <Button variant="dark" href="/demo">Practice</Button>
+      <Dropdown.Toggle split variant="dark" id="dropdown-split-basic" />
+      <Dropdown.Menu>
+      {this.state.songs.map( (item,index)=>{
+        return(
+          <Dropdown.Item>{item}</Dropdown.Item>
+        )
+      })}
+
+      </Dropdown.Menu>
+      </Dropdown>
+      <Dropdown as={ButtonGroup}>
+      <Button variant="dark" href="/composition">Compose</Button>
+      <Dropdown.Toggle split variant="dark" id="dropdown-split-basic" />
+      <Dropdown.Menu>
+      {this.state.songs.map( (item,index)=>{
+        return(
+          <Dropdown.Item>{item}</Dropdown.Item>
+        )
+      })}
+
+      </Dropdown.Menu>
+      </Dropdown>
       <Nav.Link href="/saved">Saved</Nav.Link>
       <Nav.Link onClick={this.logout.bind(this)}>Logout</Nav.Link>
       <Navbar.Collapse className="usertext">

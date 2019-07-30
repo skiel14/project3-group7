@@ -276,13 +276,14 @@ import {
           axios.post('https://elegant-bastille-67491.herokuapp.com/api/song/create',
           {
               username: this.state.username,
-              songname: "testname101",
+              songname: this.state.songName,
               songJSON: JSON.stringify(score, null, "  ")
           })
           .then(response => {
               console.log(response)
           })
-        }
+        },
+        songName: ""
       }
     }
 
@@ -315,12 +316,20 @@ import {
       this.score1.getScore().done(this.state.showScore.bind(this))
     }
 
+    updateInput = (e) => {
+      const {name, value } = e.target;
+      this.setState({
+        [name]: value
+      })
+    }
+
     render(){
       return(<>
         <NavBarComponent />
         <div id="noteFlightDiv">TestTest123</div>
         <br></br>
         <br></br>
+        <input name="songName" placeholder="Song Name" onChange={this.updateInput} value={this.state.songName} className="songName"></input>
         <Button className="output" variant="light" onClick={this.handleClick.bind(this)}>Output Score to Console</Button>
       </>)
     }
