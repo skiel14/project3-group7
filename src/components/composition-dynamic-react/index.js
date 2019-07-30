@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 import NavBarComponent from '../navbar'
-import {Col, Row, Container, Button} from 'react-bootstrap';
+import {Col, Row, Container, Button, InputGroup, FormControl} from 'react-bootstrap';
 import axios from 'axios';
 import {
     getFromStorage,
@@ -292,7 +292,7 @@ import {
 
     componentDidMount(){
       this.score1 = new this.state.NFClientFunctionObjects.ScoreView("noteFlightDiv", 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', this.state.options)
-      
+
       document.getElementById("noteFlightDiv").classList.add("flight")
 
       var token = getFromStorage('bach2basics')
@@ -329,13 +329,13 @@ import {
     handleClick = () => {
 
       this.score1.getMusicXML().done(this.state.showScore.bind(this))
-      
+
     }
 
     loadScore = () => {
       this.score1.loadMusicXML("abcdefg")
     }
-    
+
 
     updateInput = (e) => {
       const {name, value } = e.target;
@@ -350,8 +350,21 @@ import {
         <div id="noteFlightDiv">TestTest123</div>
         <br></br>
         <br></br>
-        <input name="songName" placeholder="Song Name" onChange={this.updateInput} value={this.state.songName} className="songName"></input>
-        <Button className="output" variant="light" onClick={this.handleClick.bind(this)}>Output Score to Console</Button>
+        <InputGroup className="mb-3 group">
+          <FormControl
+            name="songName"
+            className="songName"
+            placeholder="Enter Song Name"
+            aria-label="Enter Song Name"
+            aria-describedby="basic-addon2"
+            onChange={this.updateInput} value={this.state.songName}
+          />
+          <InputGroup.Append>
+            <Button variant="light" onClick={this.handleClick.bind(this)}>Save</Button>
+          </InputGroup.Append>
+        </InputGroup>
+        {/* <input name="songName" placeholder="Song Name" onChange={this.updateInput} value={this.state.songName} className="songName"></input>
+        <Button className="output" variant="light" onClick={this.handleClick.bind(this)}>Save Song</Button> */}
       </>)
     }
  }
