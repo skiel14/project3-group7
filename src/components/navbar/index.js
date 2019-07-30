@@ -42,7 +42,7 @@ class NavBarComponent extends React.Component {
                 /*
                 this.setState(state => {
                   const list = state.songs.concat("abcdefg");
-            
+
                   return {
                     list
                   };
@@ -53,7 +53,6 @@ class NavBarComponent extends React.Component {
                     let y = this.state.songJSON.concat(item.songJSONString)
                     this.setState({songs: x });
                     this.setState({songJSON: y})
-                  
                   console.log(item.songId)
                   console.log(item.songJSONString)
                 })
@@ -108,12 +107,19 @@ handleSaveToPC = index => {
     return(
       <>
     <Navbar sticky="top" bg="dark" variant="dark">
-    <Navbar.Brand href="/">Bach2Basics</Navbar.Brand>
+    <Navbar.Brand href="/">
+      <img
+        src="/images/-logo1-full.png"
+        height="30"
+        className="d-inline-block align-top"
+        alt="Bach to Basics Logo"
+      />
+    </Navbar.Brand>
     <Nav className="justify-content-end">
-      <Nav.Link href="/">Home</Nav.Link>
+      <Nav.Link className="myNavLinks" href="/">Home</Nav.Link>
       <Dropdown as={ButtonGroup}>
-      <Button variant="dark" href="/demo">Practice</Button>
-      <Dropdown.Toggle split variant="dark" id="dropdown-split-basic" />
+      <Button className="myNavLinks" variant="dark" href="/demo">Practice</Button>
+      <Dropdown.Toggle className="myNavLinks" split variant="dark" id="dropdown-split-basic" />
       <Dropdown.Menu>
       {this.state.songs.map( (item,index)=>{
         return(
@@ -124,8 +130,8 @@ handleSaveToPC = index => {
       </Dropdown.Menu>
       </Dropdown>
       <Dropdown as={ButtonGroup}>
-      <Button variant="dark" href="/composition">Compose</Button>
-      <Dropdown.Toggle split variant="dark" id="dropdown-split-basic" />
+      <Button className="myNavLinks" variant="dark" href="/composition">Compose</Button>
+      <Dropdown.Toggle className="myNavLinks" split variant="dark" id="dropdown-split-basic" />
       <Dropdown.Menu>
       {this.state.songs.map( (item,index)=>{
         return(
@@ -135,10 +141,9 @@ handleSaveToPC = index => {
 
       </Dropdown.Menu>
       </Dropdown>
-      <Nav.Link href="/saved">Saved</Nav.Link>
-      <Nav.Link onClick={this.logout.bind(this)}>Logout</Nav.Link>
+      <Nav.Link className="myNavLinks" onClick={this.logout.bind(this)}>Logout</Nav.Link>
       <Navbar.Collapse className="usertext">
-      <Navbar.Text>
+      <Navbar.Text className="myNavLinks">
       Welcome, {this.state.username}
       </Navbar.Text>
       </Navbar.Collapse>

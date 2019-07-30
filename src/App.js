@@ -6,7 +6,6 @@ import CreateDemoPage from './components/demo-page'
 import CompositionPage from './components/composition-dynamic-react'
 import Home from './components/home'
 import landingPage from './components/landing-page/index'
-import Saved from './components/saved'
 import './App.css';
 
 //ToDo:  use encodeURIComponent() function to have music data loaded in as a prop from URL.
@@ -14,7 +13,7 @@ import './App.css';
 //ToDo:  Figure out how to properly load into noteflight from JSON - DO THIS FIRST
 //ToDo:  Create link from dropdowns on Navbar -- should pull in this.songs.whateverjson and load into URL bar.
 //ToDo:  Convert Noteflight's JSON format into custom demo format
-//ToDo:  Fix Songs in Demo Page.  
+//ToDo:  Fix Songs in Demo Page.
 
 function App() {
   return (
@@ -27,7 +26,6 @@ function App() {
         <Route exact path="/composition" component={CompositionPage} />
         <Route exact path="/test-home" component={Home} />
         <Route exact path="/" component={landingPage} />
-        <Route exact path="/saved" component={Saved} />
         <Route path="/loadintodemo/:prop" component={CreateDemoPage} />
         <Route path="/loadintocompose/:prop" component={CompositionPage} />
       </Switch>
