@@ -123,7 +123,7 @@ const jingleSongData = [
     songArtist: "Ozzy Osbourne",
     songRootNote: 54,
     songNotes: [0,0,7,0,8,0,7,0,5,3,2,3,5,3,2,3,0,0,7,0,8,0,7,0,5,3,2,3,5,3,2,3, null],
-    songNoteDurations: [0, 218,218,218,218,218,218,218,218.218,218,218,218,218,218,218,218.218,218,218,218,218,218,218,218.218,218,218,218,218,218,218,218]
+    songNoteDurations: [0, 218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218]
   },
   {
     songTitle: "Army of Me",
@@ -182,6 +182,8 @@ console.log("It rerendered")
   const playJingle = (e) => {
   var jingleTime = 0
     setInfoBox("Listen to this!")
+    console.log("Here is length of notes:  ", jingleSongData[modeValue].songNotes.length)
+    console.log("Here is length of notes:  ", jingleSongData[modeValue].songNoteDurations.length)
     jingleSongData[modeValue].songNotes.map(
       function(currentValue, index) {
         console.log("current index value", index)

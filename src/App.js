@@ -9,6 +9,13 @@ import landingPage from './components/landing-page/index'
 import Saved from './components/saved'
 import './App.css';
 
+//ToDo:  use encodeURIComponent() function to have music data loaded in as a prop from URL.
+//ToDo:  use if statement to conditionally load incoming prop on demo demo-page and composition component
+//ToDo:  Figure out how to properly load into noteflight from JSON - DO THIS FIRST
+//ToDo:  Create link from dropdowns on Navbar -- should pull in this.songs.whateverjson and load into URL bar.
+//ToDo:  Convert Noteflight's JSON format into custom demo format
+//ToDo:  Fix Songs in Demo Page.  
+
 function App() {
   return (
     <Router>
@@ -21,6 +28,8 @@ function App() {
         <Route exact path="/test-home" component={Home} />
         <Route exact path="/" component={landingPage} />
         <Route exact path="/saved" component={Saved} />
+        <Route path="/loadintodemo/:prop" component={CreateDemoPage} />
+        <Route path="/loadintocompose/:prop" component={CompositionPage} />
       </Switch>
     </div>
   </Router>

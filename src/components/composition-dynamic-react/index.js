@@ -10,6 +10,8 @@ import {
 
 
 
+
+
  class CompositionDynamic extends React.Component {
     constructor(props){
       super(props)
@@ -272,6 +274,7 @@ import {
         },
         showScore: function(score){
           console.log(JSON.stringify(score, null, "  "))
+          this.handleSaveToPC(score)
           console.log("here is your username:  ", this.state.username)
           axios.post('https://elegant-bastille-67491.herokuapp.com/api/song/create',
           {
@@ -289,6 +292,7 @@ import {
 
     componentDidMount(){
       this.score1 = new this.state.NFClientFunctionObjects.ScoreView("noteFlightDiv", 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', this.state.options)
+      
       document.getElementById("noteFlightDiv").classList.add("flight")
 
       var token = getFromStorage('bach2basics')
@@ -311,10 +315,27 @@ import {
         }
     }
 
+    handleSaveToPC = jsonData => {
+      const fileData = jsonData;
+      const blob = new Blob([fileData], {type: "text/plain"});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.download = this.state.songName + ".xml";
+      link.href = url;
+      link.click();
+    }
+
+
     handleClick = () => {
 
-      this.score1.getScore().done(this.state.showScore.bind(this))
+      this.score1.getMusicXML().done(this.state.showScore.bind(this))
+      
     }
+
+    loadScore = () => {
+      this.score1.loadMusicXML("abcdefg")
+    }
+    
 
     updateInput = (e) => {
       const {name, value } = e.target;
