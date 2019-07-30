@@ -109,8 +109,8 @@ handleSaveToPC = index => {
     <Navbar sticky="top" bg="dark" variant="dark">
     <Navbar.Brand href="/">
       <img
-        src="/images/-logo1-full.png"
-        height="30"
+        src="/images/logo3.png"
+        height="35"
         className="d-inline-block align-top"
         alt="Bach to Basics Logo"
       />
