@@ -12,12 +12,14 @@ import './style.css';
 var Router = require('react-router');
 
 
+
 class NavBarComponent extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       isLoading: true,
-      songs: []
+      songs: [],
+      songJSON: []
     }
   }
 
@@ -48,8 +50,9 @@ class NavBarComponent extends React.Component {
                 */
                 json.songs.forEach((item,index)=>{
                     let x = this.state.songs.concat(item.songId)
+                    let y = this.state.songJSON.concat(item.songJSONString)
                     this.setState({songs: x });
-
+                    this.setState({songJSON: y})
                   console.log(item.songId)
                   console.log(item.songJSONString)
                 })
@@ -86,6 +89,20 @@ logout(e) {
   })
 }
 
+handleSaveToPC = index => {
+  const fileData = JSON.parse(this.state.songJSON[index]);
+  const blob = new Blob([fileData], {type: "text/plain"});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.download = this.state.songs[index] + ".xml";
+  link.href = url;
+  link.click();
+}
+
+
+
+
+
   render(){
     return(
       <>
@@ -118,7 +135,7 @@ logout(e) {
       <Dropdown.Menu>
       {this.state.songs.map( (item,index)=>{
         return(
-          <Dropdown.Item>{item}</Dropdown.Item>
+          <Dropdown.Item onClick={this.handleSaveToPC.bind(this, index)}>{item}</Dropdown.Item>
         )
       })}
 
