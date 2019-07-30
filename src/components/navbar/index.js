@@ -90,7 +90,14 @@ logout(e) {
     return(
       <>
     <Navbar sticky="top" bg="dark" variant="dark">
-    <Navbar.Brand className="myBrand" href="/">Bach to Basics</Navbar.Brand>
+    <Navbar.Brand href="/">
+      <img
+        src="/images/-logo1-full.png"
+        height="30"
+        className="d-inline-block align-top"
+        alt="Bach to Basics Logo"
+      />
+    </Navbar.Brand>
     <Nav className="justify-content-end">
       <Nav.Link className="myNavLinks" href="/">Home</Nav.Link>
       <Dropdown as={ButtonGroup}>

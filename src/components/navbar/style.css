@@ -1,11 +1,3 @@
-@font-face {
-    font-family: medici-text;
-    src: url(../landing-page/fonts/medici-text.ttf) format('truetype');
-    font-style: normal;
-    font-weight: normal;
-    text-rendering: optimizeLegibility;
-  }
-
 .usertext {
     position: absolute;
     right: 15px;
@@ -18,9 +10,4 @@
 .myNavLinks {
     color: rgba(255,255,255,.5);
     font-weight: bold;
-}
-
-.myBrand {
-    font-family: medici-text !important;
-    font-size: 30px !important;
 }
