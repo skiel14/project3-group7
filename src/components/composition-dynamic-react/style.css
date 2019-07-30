@@ -13,7 +13,13 @@ body, html {
 .output{
   margin-left: 200px;
 }
+
 #noteFlightDiv{
   width: 75%;
   height: 460px;
+}
+
+.group{
+  margin-left: 150px;
+  width: 950px;
 }
