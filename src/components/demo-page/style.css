@@ -57,3 +57,14 @@ body{
 .drop2container {
   z-index: 9998;
 }
+
+.toastbox {
+  position: absolute;
+  z-index: 10000;
+  top: -70px;
+  right: -150px;
+}
+
+.titlebox, .bodybox {
+  padding-right: 25px;
+}

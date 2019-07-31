@@ -9,6 +9,7 @@ import NavBarComponent from '../navbar';
 import Circle from '../circle';
 import Video from '../video';
 import Select from 'react-select'
+import Toast from 'react-bootstrap/Toast'
 
 
 import './style.css';
@@ -35,6 +36,7 @@ const CreateDemoPage = (props) => {
   const [gameDisable, setGameDisable] = useState(true)
   const [modeValue, setModeValue] = useState(0)
   const [startingNoteValue, setStartingNoteValue] = useState(0)
+  const [show, setShow] = useState(false);
 
   //Cycle of fifths notes
   const scaleStartingNotes = [48, 55, 50, 57, 52, 59, 54, 49, 56, 51, 58, 53]
@@ -69,6 +71,21 @@ const CreateDemoPage = (props) => {
     { value: '9', label: 'E' + String.fromCharCode(9837) },
     { value: '10', label: 'B' + String.fromCharCode(9837) },
     { value: '11', label: 'F' }
+  ]
+
+  const noteLabel = [
+    "C",
+    "G",
+    "D",
+    "A",
+    "E",
+    "B",
+    'F#(G' + String.fromCharCode(9837) + ')',
+    'C#(D' + String.fromCharCode(9837) + ')',
+    'A' + String.fromCharCode(9837),
+    'E' + String.fromCharCode(9837),
+    'B' + String.fromCharCode(9837),
+    'F'
   ]
 
   const dropdownModes = [
@@ -273,6 +290,7 @@ const CreateDemoPage = (props) => {
 
   const playJingleButton = () => {
     playJingle()
+    setShow(true)
   }
 
   return (<>
@@ -309,6 +327,24 @@ const CreateDemoPage = (props) => {
           <Button className="buttons" variant="light" onClick={playJingleButton}>Play Jingle</Button>
         </Col>
       </Row>
+      <Row>
+      <Col xs={6}>
+        <Toast className="toastbox" onClose={() => setShow(false)} show={show} delay={3000} autohide>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded mr-2"
+              alt=""
+            />
+            <strong className="mr-auto titlebox">{jingleSongData[modeValue].songTitle}</strong>
+            <small>In the key of {noteLabel[startingNoteValue]}</small>
+          </Toast.Header>
+          <Toast.Body className="bodybox">{jingleSongData[modeValue].songArtist}</Toast.Body>
+        </Toast>
+      </Col>
+      <Col xs={6}>
+      </Col>
+    </Row>
       <div className="wrapper">
         <DimensionsProvider>
           {({ containerWidth, containerHeight }) => (
