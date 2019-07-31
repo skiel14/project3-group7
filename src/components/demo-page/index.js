@@ -212,7 +212,7 @@ console.log("It rerendered")
         function(){
           var activeNoteArray = []
           console.log(jingleSongData[modeValue].songRootNote + currentValue)
-          activeNoteArray.push(jingleSongData[modeValue].songRootNote + currentValue)
+          activeNoteArray.push(jingleSongData[modeValue].songRootNote + parseInt(startingNoteValue) + currentValue)
           setActiveNote(activeNoteArray)
         }, (jingleTime+20)
       )
