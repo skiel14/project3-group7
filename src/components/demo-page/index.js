@@ -298,13 +298,13 @@ const CreateDemoPage = (props) => {
         </Col>
       </Row>
       <Row>
-        <Col className="drop1container">
+        <Col className="text-center drop1container">
           <Select defaultValue={{ label: "C", value: 0 }} aria-label="Starting Note" className="dropdown1" onChange={assignStartingNote} options={dropdownNotes} />
         </Col>
-        <Col className="drop2container">
+        <Col className="text-center drop2container">
           <Select defaultValue={{ label: "Ionian (major)", value: 0 }} aria-label="Mode" className="dropdown2" onChange={assignMode} options={dropdownModes} />
         </Col>
-        <Col>
+        <Col className="text-center">
           <Button className="buttons" variant="light" onClick={startGameButton}>Demo Scale</Button>
           <Button className="buttons" variant="light" onClick={playJingleButton}>Play Jingle</Button>
         </Col>
