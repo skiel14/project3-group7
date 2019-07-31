@@ -1,372 +1,370 @@
 import React from 'react';
 import './style.css';
 import NavBarComponent from '../navbar'
-import {Col, Row, Container, Button, InputGroup, FormControl} from 'react-bootstrap';
+import { Col, Row, Container, Button, InputGroup, FormControl } from 'react-bootstrap';
 import axios from 'axios';
 import {
-    getFromStorage,
-    setInStorage
+  getFromStorage,
+  setInStorage
 } from '../../utils/storage'
 
 
 
 
 
- class CompositionDynamic extends React.Component {
-    constructor(props){
-      super(props)
-      this.state = {
-        NFClientFunctionObjects: {
-          ScoreView: function(arg0) {
-            var PATH_PREFIX = "/embed/";
+class CompositionDynamic extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      NFClientFunctionObjects: {
+        ScoreView: function (arg0) {
+          var PATH_PREFIX = "/embed/";
 
-            var self = this;
+          var self = this;
 
-            var iframe, urlPrefix, id;
+          var iframe, urlPrefix, id;
 
-            self.getSubstringIndex = function(str, substring, n) {
-              var times = 0, index = null;
-              while (times < n && index !== -1) {
-                  index = str.indexOf(substring, index+1);
-                  times++;
-              }
-
-              return index;
+          self.getSubstringIndex = function (str, substring, n) {
+            var times = 0, index = null;
+            while (times < n && index !== -1) {
+              index = str.indexOf(substring, index + 1);
+              times++;
             }
 
-            if (typeof(arg0) == "string") {
+            return index;
+          }
 
-              id = arg0;
-              var scoreId = arguments[1];
-              var options = arguments[2];
+          if (typeof (arg0) == "string") {
 
-              // Create the iframe element hosting this ScoreView
-              var el = document.getElementById(id);
-              var iframe = document.createElement('iframe');
+            id = arg0;
+            var scoreId = arguments[1];
+            var options = arguments[2];
 
-              // Determine its origin
-              const protocol = 'https';
-              if (options.protocol) {
-                console.log('The "protocol" argument is deprecated, as all assets are served over https by default');
-              }
-              var host = options.host || 'www.noteflight.com';
-              urlPrefix = protocol + '://' + host;
+            // Create the iframe element hosting this ScoreView
+            var el = document.getElementById(id);
+            var iframe = document.createElement('iframe');
 
-              var staticViewerLocation = options.staticViewerLocation;
-
-              // Pass through viewer parameters as query arguments in the iframe URL
-              var params = '';
-              var componentName = '';
-
-
-              self.iterateObject = function(obj, componentName) {
-                for (var property in obj) {
-                  if (obj.hasOwnProperty(property)) {
-                    if (typeof obj[property] == "object") {
-                      self.iterateObject(obj[property], componentName + property + '.');
-                    } else {
-                      if (params) {
-                        params += '&';
-                      }
-
-                      params += encodeURIComponent(componentName + property) + '=' + encodeURIComponent(obj[property]);
-                    }
-                  }
-                }
-              }
-
-              var windowWidth = options.width || 800;
-              var windowHeight = options.height || 600;
-
-              // It creates the params string
-              if (options.viewParams) {
-                self.iterateObject(options.viewParams, '');
-                self.iterateObject({ windowWidth: windowWidth, windowHeight: windowHeight }, '');
-              }
-
-              var url = "";
-              if (staticViewerLocation) {
-                url = staticViewerLocation;
-              } else {
-                url = urlPrefix + PATH_PREFIX + encodeURIComponent(scoreId);
-              }
-
-              if (params) {
-                url += '?' + params;
-              }
-
-              // Configure the iframe
-              iframe.setAttribute('id', id);
-              iframe.setAttribute('src', url);
-              iframe.setAttribute('width', windowWidth);
-              iframe.setAttribute('height', windowHeight);
-              iframe.setAttribute('allow', "autoplay");
-              iframe.style.border = '1px solid #f0f0f0';
-
-              // Now jam it into the DOM and we're done!
-              el.parentNode.insertBefore(iframe, el);
-              el.parentNode.removeChild(el);
+            // Determine its origin
+            const protocol = 'https';
+            if (options.protocol) {
+              console.log('The "protocol" argument is deprecated, as all assets are served over https by default');
             }
-            else {
-              // We have been provided with an already-existing iframe, so just figure out its
-              // origin and connect to it.
+            var host = options.host || 'www.noteflight.com';
+            urlPrefix = protocol + '://' + host;
 
-              iframe = arg0;
+            var staticViewerLocation = options.staticViewerLocation;
 
-              id = iframe.getAttribute('id');
-              var src = iframe.getAttribute('src')
-              urlPrefix = src.substring(0, self.getSubstringIndex(src, "/", 3));
-            }
+            // Pass through viewer parameters as query arguments in the iframe URL
+            var params = '';
+            var componentName = '';
 
-            var initInterval;     // handle to interval timer for initialization
-            var invocationId = 0; // callback result ID counter
-            var invocationPromises = {};    // table of promises awaiting notification
-            var dispatchers = {}; // table of event handler arrays by event Id
 
-            // Set up the listener for postMessage() activity in the iframe
-            self.handleMessage = function(e) {
-              // If we get an OK-looking event from the origin and iframe we expect, then go ahead and handle it.
-              if (e.origin == urlPrefix && e.source == iframe.contentWindow && typeof(e.data) == 'string') {
-                var data = {};
-                try {
-                    data = JSON.parse(e.data);
-                } catch (err) {
-                }
-
-                if (data.kind == "initialized") {
-                  // Yay, we're initialized! Stop trying to do that any more.
-                  if (initInterval) {
-                    clearInterval(initInterval);
-                    initInterval = null;
-                  }
-                }
-                else if (data.kind == "invokeResult") {
-                  // Look for an invocation callback that is expecting this return value.
-                  if (invocationPromises[data.invocationId]) {
-                    invocationPromises[data.invocationId].success(data.result);
-                    delete invocationPromises[data.invocationId];
-                  }
-                }
-                else if (data.kind == "noteflightEvent") {
-                  // Stamp this event with the associated ID and target of this client, if we have one.
-                  if (data.event) {
-                    data.event.embedId = id;
-                    data.event.target = self;
-
-                    // If this event is "editorReady", pick up the method names to create local stubs
-                    if (data.event.type == "editorReady" && data.event.methodNames) {
-                      for (var i = 0; i < data.event.methodNames.length; i++) {
-                        self.createMethodStub(data.event.methodNames[i]);
-                      }
+            self.iterateObject = function (obj, componentName) {
+              for (var property in obj) {
+                if (obj.hasOwnProperty(property)) {
+                  if (typeof obj[property] == "object") {
+                    self.iterateObject(obj[property], componentName + property + '.');
+                  } else {
+                    if (params) {
+                      params += '&';
                     }
 
-                    // Forward an API event to any event handler that cares about it.
-                    self.dispatchEvent(data.event.type, data.event);
-                    self.dispatchEvent('any', data.event);
+                    params += encodeURIComponent(componentName + property) + '=' + encodeURIComponent(obj[property]);
                   }
+                }
+              }
+            }
+
+            var windowWidth = options.width || 800;
+            var windowHeight = options.height || 600;
+
+            // It creates the params string
+            if (options.viewParams) {
+              self.iterateObject(options.viewParams, '');
+              self.iterateObject({ windowWidth: windowWidth, windowHeight: windowHeight }, '');
+            }
+
+            var url = "";
+            if (staticViewerLocation) {
+              url = staticViewerLocation;
+            } else {
+              url = urlPrefix + PATH_PREFIX + encodeURIComponent(scoreId);
+            }
+
+            if (params) {
+              url += '?' + params;
+            }
+
+            // Configure the iframe
+            iframe.setAttribute('id', id);
+            iframe.setAttribute('src', url);
+            iframe.setAttribute('width', windowWidth);
+            iframe.setAttribute('height', windowHeight);
+            iframe.setAttribute('allow', "autoplay");
+            iframe.style.border = '1px solid #f0f0f0';
+
+            // Now jam it into the DOM and we're done!
+            el.parentNode.insertBefore(iframe, el);
+            el.parentNode.removeChild(el);
+          }
+          else {
+            // We have been provided with an already-existing iframe, so just figure out its
+            // origin and connect to it.
+
+            iframe = arg0;
+
+            id = iframe.getAttribute('id');
+            var src = iframe.getAttribute('src')
+            urlPrefix = src.substring(0, self.getSubstringIndex(src, "/", 3));
+          }
+
+          var initInterval;     // handle to interval timer for initialization
+          var invocationId = 0; // callback result ID counter
+          var invocationPromises = {};    // table of promises awaiting notification
+          var dispatchers = {}; // table of event handler arrays by event Id
+
+          // Set up the listener for postMessage() activity in the iframe
+          self.handleMessage = function (e) {
+            // If we get an OK-looking event from the origin and iframe we expect, then go ahead and handle it.
+            if (e.origin == urlPrefix && e.source == iframe.contentWindow && typeof (e.data) == 'string') {
+              var data = {};
+              try {
+                data = JSON.parse(e.data);
+              } catch (err) {
+              }
+
+              if (data.kind == "initialized") {
+                // Yay, we're initialized! Stop trying to do that any more.
+                if (initInterval) {
+                  clearInterval(initInterval);
+                  initInterval = null;
+                }
+              }
+              else if (data.kind == "invokeResult") {
+                // Look for an invocation callback that is expecting this return value.
+                if (invocationPromises[data.invocationId]) {
+                  invocationPromises[data.invocationId].success(data.result);
+                  delete invocationPromises[data.invocationId];
+                }
+              }
+              else if (data.kind == "noteflightEvent") {
+                // Stamp this event with the associated ID and target of this client, if we have one.
+                if (data.event) {
+                  data.event.embedId = id;
+                  data.event.target = self;
+
+                  // If this event is "editorReady", pick up the method names to create local stubs
+                  if (data.event.type == "editorReady" && data.event.methodNames) {
+                    for (var i = 0; i < data.event.methodNames.length; i++) {
+                      self.createMethodStub(data.event.methodNames[i]);
+                    }
+                  }
+
+                  // Forward an API event to any event handler that cares about it.
+                  self.dispatchEvent(data.event.type, data.event);
+                  self.dispatchEvent('any', data.event);
+                }
+              }
+            }
+          };
+
+          // Send a message to our iframe
+          self.dispatchMessage = function (data) {
+            if (typeof (JSON) !== 'undefined') {
+              iframe.contentWindow.postMessage(JSON.stringify(data), urlPrefix);
+            }
+          };
+
+          if (window.addEventListener) {
+            window.addEventListener('message', self.handleMessage);
+          }
+          else if (window.attachEvent) {
+            window.attachEvent('onmessage', self.handleMessage);
+          }
+
+          // Set up a repeating call that will initialize the viewer eventually
+          if (typeof (JSON) !== 'undefined') {
+            initInterval = setInterval(function () {
+              self.dispatchMessage({
+                kind: 'initializeViewer'
+              });
+            }, 100);
+          }
+          else {
+            throw new Error('Noteflight API requires JSON');
+          }
+
+          self.applyMethod = function (methodName, args) {
+            var message = {
+              kind: 'invokeMethod',
+              methodName: methodName,
+              args: args
+            };
+
+            var promise = {
+              doneCallbacks: [],
+              done: function (callback) {
+                this.doneCallbacks.push(callback);
+                return this;
+              },
+              success: function (result) {
+                for (var i = 0; i < this.doneCallbacks.length; i++) {
+                  this.doneCallbacks[i](result);
                 }
               }
             };
 
-            // Send a message to our iframe
-            self.dispatchMessage = function(data) {
-              if (typeof(JSON) !== 'undefined') {
-                iframe.contentWindow.postMessage(JSON.stringify(data), urlPrefix);
-              }
+            var iid = ++invocationId;
+            invocationPromises[iid] = promise;
+            message.invocationId = iid;
+
+            self.dispatchMessage(message);
+
+            return promise;
+          }
+
+          // Create a stub method on this ScoreView object that can be invoked as a proxy
+          // for the invocation of the corresponding embedded document method, returning a promise.
+          self.createMethodStub = function (methodName) {
+            self[methodName] = function () {
+              return self.applyMethod(methodName, Array.prototype.slice.call(arguments, 0));
             };
+          }
 
-            if (window.addEventListener) {
-              window.addEventListener('message', self.handleMessage);
+          // Add an event handler. The special eventType value "any" will receive callbacks
+          // on all events.
+          self.addEventListener = function (eventType, handler) {
+            if (!dispatchers[eventType]) {
+              dispatchers[eventType] = [];
             }
-            else if (window.attachEvent) {
-              window.attachEvent('onmessage', self.handleMessage);
-            }
+            dispatchers[eventType].push(handler);
+          }
 
-            // Set up a repeating call that will initialize the viewer eventually
-            if (typeof(JSON) !== 'undefined') {
-              initInterval = setInterval(function() {
-                self.dispatchMessage({
-                  kind: 'initializeViewer'
-                });
-              }, 100);
-            }
-            else {
-              throw new Error('Noteflight API requires JSON');
-            }
-
-            self.applyMethod = function(methodName, args) {
-              var message = {
-                kind: 'invokeMethod',
-                methodName: methodName,
-                args: args
-              };
-
-              var promise = {
-                doneCallbacks: [],
-                done: function(callback) {
-                  this.doneCallbacks.push(callback);
-                  return this;
-                },
-                success: function(result) {
-                  for (var i = 0; i < this.doneCallbacks.length; i++) {
-                    this.doneCallbacks[i](result);
-                  }
-                }
-              };
-
-              var iid = ++invocationId;
-              invocationPromises[iid] = promise;
-              message.invocationId = iid;
-
-              self.dispatchMessage(message);
-
-              return promise;
-            }
-
-            // Create a stub method on this ScoreView object that can be invoked as a proxy
-            // for the invocation of the corresponding embedded document method, returning a promise.
-            self.createMethodStub = function(methodName) {
-              self[methodName] = function() {
-                return self.applyMethod(methodName, Array.prototype.slice.call(arguments, 0));
-              };
-            }
-
-            // Add an event handler. The special eventType value "any" will receive callbacks
-            // on all events.
-            self.addEventListener = function(eventType, handler) {
-              if (!dispatchers[eventType]) {
-                dispatchers[eventType] = [];
-              }
-              dispatchers[eventType].push(handler);
-            }
-
-            // Remove an event handler.
-            self.removeEventListener = function(eventType, handler) {
-              if (dispatchers[eventType]) {
-                for (var i = 0; i < dispatchers[eventType].length; i++) {
-                  if (dispatchers[eventType][i] === handler) {
-                    dispatchers[eventType].splice(i, 1);
-                    return true;
-                  }
+          // Remove an event handler.
+          self.removeEventListener = function (eventType, handler) {
+            if (dispatchers[eventType]) {
+              for (var i = 0; i < dispatchers[eventType].length; i++) {
+                if (dispatchers[eventType][i] === handler) {
+                  dispatchers[eventType].splice(i, 1);
+                  return true;
                 }
               }
-              return false;
             }
+            return false;
+          }
 
-            // Dispatch an event to a specific event type.
-            self.dispatchEvent = function(eventType, event) {
-              if (dispatchers[eventType]) {
-                for (var i = 0; i < dispatchers[eventType].length; i++) {
-                  dispatchers[eventType][i](event);
-                }
+          // Dispatch an event to a specific event type.
+          self.dispatchEvent = function (eventType, event) {
+            if (dispatchers[eventType]) {
+              for (var i = 0; i < dispatchers[eventType].length; i++) {
+                dispatchers[eventType][i](event);
               }
             }
           }
-        },
-        options: {
-            width: 800,
-            height: 400,
-            viewParams: {
-              scale: 1.5,
-              role: 'template',
-              app: 'html5'
-            }
-        },
-        showScore: function(score){
-          console.log(JSON.stringify(score, null, "  "))
-          this.handleSaveToPC(score)
-          console.log("here is your username:  ", this.state.username)
-          axios.post('https://elegant-bastille-67491.herokuapp.com/api/song/create',
+        }
+      },
+      options: {
+        width: 800,
+        height: 400,
+        viewParams: {
+          scale: 1.5,
+          role: 'template',
+          app: 'html5'
+        }
+      },
+      showScore: function (score) {
+        console.log(JSON.stringify(score, null, "  "))
+        this.handleSaveToPC(score)
+        console.log("here is your username:  ", this.state.username)
+        axios.post('https://elegant-bastille-67491.herokuapp.com/api/song/create',
           {
-              username: this.state.username,
-              songname: this.state.songName,
-              songJSON: JSON.stringify(score, null, "  ")
+            username: this.state.username,
+            songname: this.state.songName,
+            songJSON: JSON.stringify(score, null, "  ")
           })
           .then(response => {
-              console.log(response)
+            console.log(response)
           })
-        },
-        songName: ""
-      }
+      },
+      songName: ""
     }
+  }
 
-    componentDidMount(){
-      this.score1 = new this.state.NFClientFunctionObjects.ScoreView("noteFlightDiv", 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', this.state.options)
+  componentDidMount() {
+    this.score1 = new this.state.NFClientFunctionObjects.ScoreView("noteFlightDiv", 'fcfd6d0bc0770f67cdbe1b8129456521fec090a0', this.state.options)
 
-      document.getElementById("noteFlightDiv").classList.add("flight")
+    document.getElementById("noteFlightDiv").classList.add("flight")
 
-      var token = getFromStorage('bach2basics')
-      if (token) {
-          console.log("Token Exists - checking")
-          fetch('https://elegant-bastille-67491.herokuapp.com/api/account/verify?token=' + token)
-          .then(res => res.json())
-          .then(json => {
-              if (json.success) {
-                  console.log("here is json")
-                  console.log(json)
-                  this.setState({
-                      token,
-                      userId: json.userId,
-                      username: json.username,
-                      isLoading: false
-                  })
-              }
-          })
-        }
+    var token = getFromStorage('bach2basics')
+    if (token) {
+      console.log("Token Exists - checking")
+      fetch('https://elegant-bastille-67491.herokuapp.com/api/account/verify?token=' + token)
+        .then(res => res.json())
+        .then(json => {
+          if (json.success) {
+            console.log("here is json")
+            console.log(json)
+            this.setState({
+              token,
+              userId: json.userId,
+              username: json.username,
+              isLoading: false
+            })
+          }
+        })
     }
+  }
 
-    handleSaveToPC = jsonData => {
-      const fileData = jsonData;
-      const blob = new Blob([fileData], {type: "text/plain"});
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.download = this.state.songName + ".xml";
-      link.href = url;
-      link.click();
-    }
-
-
-    handleClick = () => {
-
-      this.score1.getMusicXML().done(this.state.showScore.bind(this))
-
-    }
-
-    loadScore = () => {
-      this.score1.loadMusicXML("abcdefg")
-    }
+  handleSaveToPC = jsonData => {
+    const fileData = jsonData;
+    const blob = new Blob([fileData], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = this.state.songName + ".xml";
+    link.href = url;
+    link.click();
+  }
 
 
-    updateInput = (e) => {
-      const {name, value } = e.target;
-      this.setState({
-        [name]: value
-      })
-    }
+  handleClick = () => {
 
-    render(){
-      return(<>
-        <NavBarComponent />
-        <div id="noteFlightDiv">TestTest123</div>
-        <br></br>
-        <br></br>
-        <InputGroup className="mb-3 group">
-          <FormControl
-            name="songName"
-            className="songName"
-            placeholder="Enter Song Name"
-            aria-label="Enter Song Name"
-            aria-describedby="basic-addon2"
-            onChange={this.updateInput} value={this.state.songName}
-          />
-          <InputGroup.Append>
-            <Button variant="light" onClick={this.handleClick.bind(this)}>Save</Button>
-          </InputGroup.Append>
-        </InputGroup>
-        {/* <input name="songName" placeholder="Song Name" onChange={this.updateInput} value={this.state.songName} className="songName"></input>
-        <Button className="output" variant="light" onClick={this.handleClick.bind(this)}>Save Song</Button> */}
-      </>)
-    }
- }
+    this.score1.getMusicXML().done(this.state.showScore.bind(this))
+
+  }
+
+  loadScore = () => {
+    this.score1.loadMusicXML("abcdefg")
+  }
+
+
+  updateInput = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
+  render() {
+    return (<>
+      <NavBarComponent />
+      <div id="noteFlightDiv">TestTest123</div>
+      <br></br>
+      <br></br>
+      <InputGroup className="mb-3 group">
+        <FormControl
+          name="songName"
+          className="songName"
+          placeholder="Enter Song Name"
+          aria-label="Enter Song Name"
+          aria-describedby="basic-addon2"
+          onChange={this.updateInput} value={this.state.songName}
+        />
+        <InputGroup.Append>
+          <Button variant="light" onClick={this.handleClick.bind(this)}>Save</Button>
+        </InputGroup.Append>
+      </InputGroup>
+    </>)
+  }
+}
 
 export default CompositionDynamic;
