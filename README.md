@@ -53,7 +53,7 @@ On the Compose page you can create your own music, and do other cool stuff.
 * Nodejs
 * Mongodb/Mongoose
 * React Bootstrap - The web framework used
-* Router
+* React Router Dom
 * Axios
 * Bcrypt
 
