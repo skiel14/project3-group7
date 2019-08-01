@@ -4,6 +4,9 @@
 <p align="center">
 (https://bach2basics.herokuapp.com/)
 </p>
+<p align="center">
+  (https://docs.google.com/presentation/d/1I-QFC4zUMG_RdNnN4ZCVjx-3urke5SH_w7F_j5xTA38/edit?usp=sharing)
+</p>
 
 <p align="center">
 <img src="public/static/bachhhome.png">
