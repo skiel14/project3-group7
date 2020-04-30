@@ -11,7 +11,7 @@
     "concurrently": "^4.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mongoose": "^5.6.3",
     "morgan": "^1.9.1",
     "node-env-run": "^3.0.2",
